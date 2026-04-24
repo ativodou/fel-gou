@@ -37,62 +37,38 @@
   .lang-btn.active { background: var(--crimson); color: var(--cream); border-radius: 2rem; }
 
   /* ════════════════════════════════════
-     HEADER — tall, Chef Tony + Brand
+     HEADER — clean, no topbar
   ════════════════════════════════════ */
   header {
-    position: fixed; top: 36px; left: 0; right: 0; z-index: 100;
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
     height: 160px;
     background: var(--cream);
     border-bottom: 3px solid var(--gold);
     display: grid;
-    grid-template-columns: 200px 1fr 260px;
+    grid-template-columns: 180px 1fr 260px;
     overflow: visible;
   }
 
-  /* LEFT — Chef Tony */
+  /* LEFT — Chef Tony photo only, no background */
   .header-chef {
     position: relative;
-    display: flex; flex-direction: column; align-items: center; justify-content: flex-end;
-    background: linear-gradient(to bottom, var(--crimson-dark), #2A0D0D);
-    overflow: visible; padding-bottom: 0.4rem;
+    display: flex; align-items: flex-end; justify-content: center;
+    background: none;
+    overflow: visible;
   }
   .header-chef-photo {
-    position: absolute; bottom: 0; left: 50%; transform: translateX(-50%);
-    width: 175px; height: 200px;
+    position: absolute; bottom: 0; left: 50%;
+    transform: translateX(-50%);
+    width: 170px; height: 195px;
     object-fit: contain; object-position: bottom;
-    filter: drop-shadow(0 -4px 20px rgba(200,137,26,0.35));
-mix-blend-mode: multiply;
+    mix-blend-mode: multiply;
     z-index: 10; pointer-events: none;
   }
-  .header-chef-info { position: relative; z-index: 11; text-align: center; padding-bottom: 0.5rem; }
-  .header-chef-name {
-    font-family: 'Cormorant Garamond', serif; font-size: 0.82rem; font-weight: 700;
-    color: var(--gold-light); letter-spacing: 0.05em; line-height: 1.1;
-    text-shadow: 0 1px 6px rgba(0,0,0,0.6);
-  }
-  .header-chef-role {
-    font-size: 0.52rem; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase;
-    color: rgba(250,244,232,0.45); margin-top: 0.1rem;
-  }
-  .header-chef-seal {
-    display: inline-flex; align-items: center; gap: 0.25rem;
-    background: var(--forest); color: #fff; border-radius: 1rem;
-    padding: 0.15rem 0.5rem; font-size: 0.5rem; font-weight: 700;
-    letter-spacing: 0.08em; text-transform: uppercase; margin-top: 0.25rem;
-  }
-  .header-chef-seal::before { content: '✓'; }
 
-  /* CENTER — Brand */
+  /* CENTER — Brand + Nav */
   .header-brand {
     display: flex; flex-direction: column; align-items: center; justify-content: center;
-    gap: 0.4rem; padding: 1rem 2rem; position: relative;
-    border-left: 1px solid rgba(200,137,26,0.2);
-    border-right: 1px solid rgba(200,137,26,0.2);
-  }
-  .header-brand::before {
-    content: ''; position: absolute; inset: 0;
-    background: linear-gradient(180deg, rgba(200,137,26,0.05) 0%, transparent 100%);
-    pointer-events: none;
+    gap: 0.5rem; padding: 1rem 2rem; position: relative;
   }
   .header-logo {
     font-family: 'Cormorant Garamond', serif;
@@ -100,11 +76,7 @@ mix-blend-mode: multiply;
     color: var(--crimson-dark); letter-spacing: 0.04em;
   }
   .header-logo span { color: var(--gold); font-style: italic; }
-  .header-tagline {
-    font-size: 0.62rem; font-weight: 400; letter-spacing: 0.22em;
-    text-transform: uppercase; color: var(--warm-gray);
-  }
-  .header-nav-links { display: flex; gap: 2rem; list-style: none; margin-top: 0.25rem; }
+  .header-nav-links { display: flex; gap: 2rem; list-style: none; }
   .header-nav-links a {
     text-decoration: none; font-size: 0.7rem; font-weight: 500;
     letter-spacing: 0.13em; text-transform: uppercase;
@@ -125,7 +97,7 @@ mix-blend-mode: multiply;
   .cart-count { background: var(--gold); color: var(--charcoal); border-radius: 50%; width: 18px; height: 18px; font-size: 0.65rem; font-weight: 700; display: flex; align-items: center; justify-content: center; }
 
   /* push content below fixed header */
-  .header-spacer { height: calc(36px + 160px); }
+  .header-spacer { height: 160px; }
 
   /* ════════════════════════════════════
      STRIP
@@ -332,31 +304,16 @@ mix-blend-mode: multiply;
 </head>
 <body>
 
-<!-- ── TOP BAR ── -->
-<div class="topbar">
-  <span class="topbar-tagline" data-i18n="topbar.tag"></span>
-  <div class="lang-toggle">
-    <button class="lang-btn active" onclick="setLang('ht')">KR</button>
-    <button class="lang-btn" onclick="setLang('en')">EN</button>
-  </div>
-</div>
-
 <!-- ── HEADER ── -->
 <header>
-  <!-- LEFT: Chef Tony -->
+  <!-- LEFT: Chef Tony photo only -->
   <div class="header-chef">
     <img class="header-chef-photo" src="images/chef-tony.png" alt="Chef Tony Desmornes">
-    <div class="header-chef-info">
-      <div class="header-chef-name">Chef Tony Desmornes</div>
-      <div class="header-chef-role" data-i18n="chef.bar.title"></div>
-      <div class="header-chef-seal" data-i18n="chef.bar.seal"></div>
-    </div>
   </div>
 
   <!-- CENTER: Brand + Nav -->
   <div class="header-brand">
     <div class="header-logo">Fèl <span>Gou</span></div>
-    <div class="header-tagline" data-i18n="topbar.tag"></div>
     <ul class="header-nav-links">
       <li><a href="#products" data-i18n="nav.spices"></a></li>
       <li><a href="#story" data-i18n="nav.story"></a></li>
@@ -601,24 +558,16 @@ const T = {
 
 const products = {
   ht:[
-    {id:1,name:'Epis Ayisyen',sub:'Baz asezonnman vèt',emoji:'🫙',origin:'Latibonit, Ayiti',desc:'Kè kwizin ayisyen — yon melanj zèb fre: pèsi, tim, zonyon vèt, lay ak piman.',price:12.99,badge:'bs',bg:'#EFF7E8'},
-    {id:2,name:'Piman Bouk',sub:'Scotch Bonnet seche',emoji:'🌶️',origin:'Sid Ayiti',desc:'Piman ki pi pafime an Ayiti. Chalè entans ak gou twopikal. Pafè pou griyò ak poul nan sòs.',price:9.99,badge:'hot',bg:'#FBE8E8'},
-    {id:3,name:'Tim Ayisyen',sub:'Thymus vulgaris seche',emoji:'🌿',origin:'Kenscoff, Ayiti',desc:'Kiltive nan 1500m altitid. Pi pwisan pase variete ewopeyen. Esansyèl nan joumou.',price:7.99,badge:'new',bg:'#E8F4EE'},
-    {id:4,name:'Kanèl Baton',sub:'Kanèl Ceylon',emoji:'🫙',origin:'Enpòte via Ayiti',desc:'Baton kanèl dore, dou ak konplèks. Pafè pou kafe ayisyen, pen patat ak dese kreyòl.',price:8.99,badge:null,bg:'#F7EEE0'},
-    {id:5,name:'Jiwòf',sub:'Syzygium aromaticum',emoji:'🌰',origin:'Nòdès Ayiti',desc:'Jiwòf antye ak yon odè pwisan. Itilize nan marinad vyann, diri kole ak bwason cho.',price:8.49,badge:null,bg:'#F0E8DC'},
-    {id:6,name:'Anis Etwal',sub:'Illicium verum',emoji:'⭐',origin:'Enpòte via Ayiti',desc:'Bèl etwal anis pafime. Baz pou anpil tizan ayisyen ak sòs pou kochon ak kabrit.',price:9.49,badge:'new',bg:'#F5EDE0'},
-    {id:7,name:'Pwav Nwa',sub:'Piper nigrum ayisyen',emoji:'⚫',origin:'Nip, Ayiti',desc:'Pwav nwa ayisyen ak yon pike jenerè ak pwofondè awomat ra. Moulen fre sou demann.',price:7.49,badge:null,bg:'#EBEBEB'},
-    {id:8,name:'Sèl ak Zèb',sub:'Melanj atizanal',emoji:'🧂',origin:'Kòt Sid Ayiti',desc:'Sèl lanmè ayisyen melanje ak tim, pèsi seche ak piman dou. Touche final tout plat ayisyen.',price:6.99,badge:'bs',bg:'#EAF3F7'},
+    {id:1,name:'Griyo',sub:'Melanj epis pou kochon',emoji:'🥩',origin:'Fèl Gou · Chef Tony Desmornes',desc:'Fòmil familyal espesyal: Orange sure, Powo, Piman bouk, Sèl ak sekrè fanmi nou. Pafè pou griyò kreyòl otantik.',price:12.99,badge:'bs',bg:'#5C3D11',textcolor:'#F5E6C0'},
+    {id:2,name:'Pwason',sub:'Melanj epis pou pwason',emoji:'🐟',origin:'Fèl Gou · Chef Tony Desmornes',desc:'Sitwon, Lay, Powo, Piman bouk, Anis, Pèsi ak plis. Fè pwason ou gen yon gou twopikal ki inoublyab.',price:12.99,badge:'new',bg:'#0D1B3E',textcolor:'#C8D8F0'},
+    {id:3,name:'Taso',sub:'Melanj epis pou bèf',emoji:'🥩',origin:'Fèl Gou · Chef Tony Desmornes',desc:'Lay, Powo, Orange sure, Sèl, Tim, Pèsi, Kimen, Jenjann, Piman bouk ak sekrè fanmi. Taso ou pa t janm goute sa.',price:12.99,badge:null,bg:'#3D1A0A',textcolor:'#F5E6C0'},
+    {id:4,name:'Volay',sub:'Melanj epis pou poul',emoji:'🍗',origin:'Fèl Gou · Chef Tony Desmornes',desc:'Lay, Powo, Piman bouk, Sèl, Pwav blan, Sitwon, Orange sure, Wozmari, Pèsi ak sekrè fanmi. Poul ou a p ap janm goute menm.',price:12.99,badge:'hot',bg:'#1A3D1A',textcolor:'#C8F0C8'},
   ],
   en:[
-    {id:1,name:'Haitian Epis',sub:'Green seasoning base',emoji:'🫙',origin:'Artibonite, Haiti',desc:'The heart of Haitian cooking — a blend of fresh herbs: parsley, thyme, green onions, garlic and pepper.',price:12.99,badge:'bs',bg:'#EFF7E8'},
-    {id:2,name:'Scotch Bonnet',sub:'Dried scotch bonnet pepper',emoji:'🌶️',origin:'Southern Haiti',desc:"Haiti's most aromatic pepper. Intense heat with a tropical fruitiness. Perfect for griot and stewed chicken.",price:9.99,badge:'hot',bg:'#FBE8E8'},
-    {id:3,name:'Haitian Thyme',sub:'Dried thymus vulgaris',emoji:'🌿',origin:'Kenscoff, Haiti',desc:'Grown at 1500m elevation. More potent than European varieties. Essential in joumou soup.',price:7.99,badge:'new',bg:'#E8F4EE'},
-    {id:4,name:'Cinnamon Sticks',sub:'Ceylon cinnamon',emoji:'🫙',origin:'Imported via Haiti',desc:'Golden cinnamon sticks, sweet and complex. Perfect for Haitian coffee, sweet potato bread and creole desserts.',price:8.99,badge:null,bg:'#F7EEE0'},
-    {id:5,name:'Whole Cloves',sub:'Syzygium aromaticum',emoji:'🌰',origin:'Northeast Haiti',desc:'Whole cloves with a powerful aroma. Used in meat marinades, rice dishes and warm drinks.',price:8.49,badge:null,bg:'#F0E8DC'},
-    {id:6,name:'Star Anise',sub:'Illicium verum',emoji:'⭐',origin:'Imported via Haiti',desc:'Beautiful fragrant anise stars. Base for many Haitian herbal teas and sauces for pork and goat.',price:9.49,badge:'new',bg:'#F5EDE0'},
-    {id:7,name:'Black Pepper',sub:'Haitian piper nigrum',emoji:'⚫',origin:'Nippes, Haiti',desc:'Haitian black pepper with generous heat and rare aromatic depth. Freshly ground on request.',price:7.49,badge:null,bg:'#EBEBEB'},
-    {id:8,name:'Herb Salt',sub:'Artisan blend',emoji:'🧂',origin:'Southern Coast, Haiti',desc:'Haitian sea salt blended with thyme, dried parsley and sweet pepper. The finishing touch for any Haitian dish.',price:6.99,badge:'bs',bg:'#EAF3F7'},
+    {id:1,name:'Griyo',sub:'Pork spice blend',emoji:'🥩',origin:'Fèl Gou · Chef Tony Desmornes',desc:'Special family recipe: Orange sure, Leek, Scotch bonnet, Salt and our family secret. Perfect for authentic Haitian griot.',price:12.99,badge:'bs',bg:'#5C3D11',textcolor:'#F5E6C0'},
+    {id:2,name:'Pwason',sub:'Fish spice blend',emoji:'🐟',origin:'Fèl Gou · Chef Tony Desmornes',desc:'Lemon, Garlic, Leek, Scotch bonnet, Anise, Parsley and more. Give your fish an unforgettable tropical flavor.',price:12.99,badge:'new',bg:'#0D1B3E',textcolor:'#C8D8F0'},
+    {id:3,name:'Taso',sub:'Beef spice blend',emoji:'🥩',origin:'Fèl Gou · Chef Tony Desmornes',desc:'Garlic, Leek, Orange sure, Salt, Thyme, Parsley, Cumin, Ginger, Scotch bonnet and family secret. Taso like you\'ve never tasted.',price:12.99,badge:null,bg:'#3D1A0A',textcolor:'#F5E6C0'},
+    {id:4,name:'Volay',sub:'Poultry spice blend',emoji:'🍗',origin:'Fèl Gou · Chef Tony Desmornes',desc:'Garlic, Leek, Scotch bonnet, Salt, White pepper, Lemon, Orange sure, Rosemary, Parsley and family secret. Your chicken will never taste the same.',price:12.99,badge:'hot',bg:'#1A3D1A',textcolor:'#C8F0C8'},
   ]
 };
 
@@ -655,12 +604,13 @@ function buildStrip(){
 
 function renderProducts(){
   const list=products[lang];
+  const labelMap = {1:'etiket_tony_griyo.jpg',2:'etiket_tony_pwason.jpg',3:'etiket_tony_taso.jpg',4:'etiket_tony_volay.jpg'};
   const bc={bs:'badge-bs',hot:'badge-hot',new:'badge-new'};
   const bl={bs:t('badge.bs'),hot:t('badge.hot'),new:t('badge.new')};
   document.getElementById('product-grid').innerHTML=list.map(p=>`
     <div class="product-card">
-      <div class="product-img" style="background:${p.bg}">
-        <span>${p.emoji}</span>
+      <div class="product-img" style="background:${p.bg}; padding:0; overflow:hidden;">
+        <img src="images/${labelMap[p.id]}" alt="${p.name}" style="width:100%;height:100%;object-fit:cover;">
         ${p.badge?`<span class="product-badge ${bc[p.badge]}">${bl[p.badge]}</span>`:''}
       </div>
       <div class="product-body">
