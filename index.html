@@ -120,18 +120,50 @@
   .hero-desc { font-size: 0.98rem; font-weight: 300; color: rgba(250,244,232,0.72); line-height: 1.75; max-width: 360px; margin-bottom: 2.5rem; position: relative; }
   .hero-cta { display: inline-flex; align-items: center; gap: 0.75rem; background: var(--gold); color: var(--charcoal); padding: 0.9rem 2.2rem; border-radius: 2rem; font-size: 0.82rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; border: none; font-family: 'Jost', sans-serif; cursor: pointer; transition: background 0.2s, transform 0.15s; position: relative; }
   .hero-cta:hover { background: var(--gold-light); transform: translateY(-2px); }
-  .hero-right { background: linear-gradient(135deg, #3D1A0A, #6B2A10 40%, #8B3A1A); position: relative; display: flex; align-items: center; justify-content: center; overflow: hidden; }
-  .hero-pattern { position: absolute; inset: 0; display: grid; grid-template-columns: repeat(4,1fr); grid-template-rows: repeat(4,1fr); gap: 1px; opacity: 0.15; }
-  .hero-pattern div { background: var(--gold); border-radius: 2px; }
-  .spice-showcase { position: relative; z-index: 2; display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; padding: 2rem; }
-  .spice-orb { width: 130px; height: 130px; border-radius: 50%; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; border: 2px solid rgba(200,137,26,0.4); cursor: pointer; transition: transform 0.3s, border-color 0.3s; }
-  .spice-orb:hover { transform: scale(1.06) !important; border-color: var(--gold); }
-  .spice-orb-1 { background: radial-gradient(circle at 40% 40%, #8B2500, #4E1200); }
-  .spice-orb-2 { background: radial-gradient(circle at 40% 40%, #2A5C1A, #142E0A); transform: translateY(2rem); }
-  .spice-orb-3 { background: radial-gradient(circle at 40% 40%, #7A4A00, #3D2500); transform: translateY(-1rem); }
-  .spice-orb-4 { background: radial-gradient(circle at 40% 40%, #5C1A1A, #2E0A0A); }
-  .orb-emoji { font-size: 2.2rem; display: block; margin-bottom: 0.25rem; }
-  .orb-name { font-family: 'Cormorant Garamond', serif; font-size: 0.78rem; color: rgba(250,244,232,0.9); font-weight: 600; line-height: 1.2; padding: 0 0.5rem; }
+  /* SPICE GRID */
+  .hero-right { background: linear-gradient(135deg, #3D1A0A, #6B2A10 40%, #8B3A1A); position: relative; display: grid; grid-template-columns: repeat(4,1fr); grid-template-rows: repeat(4,1fr); gap: 2px; overflow: hidden; }
+  .spice-tile {
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    cursor: pointer; padding: 0.5rem;
+    border: 1px solid rgba(200,137,26,0.15);
+    transition: background 0.2s, transform 0.15s;
+    position: relative; overflow: hidden;
+  }
+  .spice-tile:hover { background: rgba(200,137,26,0.2); transform: scale(1.05); z-index: 2; }
+  .spice-tile-emoji { font-size: 1.6rem; line-height: 1; margin-bottom: 0.2rem; }
+  .spice-tile-name { font-family: 'Cormorant Garamond', serif; font-size: 0.65rem; font-weight: 600; color: var(--cream); text-align: center; line-height: 1.2; letter-spacing: 0.03em; }
+  .spice-tile-kr { font-size: 0.55rem; color: var(--gold-light); font-weight: 400; text-align: center; margin-top: 0.1rem; }
+
+  /* SPICE MODAL */
+  .spice-overlay { position: fixed; inset: 0; z-index: 300; background: rgba(30,26,20,0.7); opacity: 0; pointer-events: none; transition: opacity 0.3s; display: flex; align-items: center; justify-content: center; padding: 2rem; }
+  .spice-overlay.open { opacity: 1; pointer-events: all; }
+  .spice-modal {
+    background: var(--cream); border-radius: 1.5rem; max-width: 560px; width: 100%;
+    overflow: hidden; transform: scale(0.92) translateY(20px);
+    transition: transform 0.3s cubic-bezier(.4,0,.2,1);
+    box-shadow: 0 40px 80px rgba(0,0,0,0.4);
+  }
+  .spice-overlay.open .spice-modal { transform: scale(1) translateY(0); }
+  .spice-modal-header {
+    padding: 2rem 2rem 1.5rem;
+    display: flex; align-items: center; gap: 1.25rem;
+    border-bottom: 1px solid rgba(200,137,26,0.2);
+  }
+  .spice-modal-icon { font-size: 3.5rem; line-height: 1; flex-shrink: 0; }
+  .spice-modal-title-wrap { flex: 1; }
+  .spice-modal-name { font-family: 'Cormorant Garamond', serif; font-size: 2rem; font-weight: 700; color: var(--crimson-dark); line-height: 1; }
+  .spice-modal-kr { font-size: 0.75rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--warm-gray); margin-top: 0.2rem; }
+  .spice-modal-close { background: none; border: none; font-size: 1.5rem; cursor: pointer; color: var(--warm-gray); transition: color 0.2s; line-height: 1; flex-shrink: 0; }
+  .spice-modal-close:hover { color: var(--crimson); }
+  .spice-modal-body { padding: 1.5rem 2rem 2rem; display: flex; flex-direction: column; gap: 1.25rem; }
+  .spice-modal-section h4 {
+    font-size: 0.65rem; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--gold); margin-bottom: 0.5rem; display: flex; align-items: center; gap: 0.5rem;
+  }
+  .spice-modal-section h4::before { content: ''; display: inline-block; width: 20px; height: 1px; background: var(--gold); }
+  .spice-modal-section p { font-size: 0.88rem; font-weight: 300; color: var(--text-body); line-height: 1.75; }
+  .spice-modal-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 0.5rem; }
+  .spice-tag { background: var(--cream-dark); border: 1px solid rgba(200,137,26,0.3); border-radius: 1rem; padding: 0.2rem 0.7rem; font-size: 0.72rem; color: var(--text-body); font-weight: 500; }
 
   /* ════════════════════════════════════
      SECTIONS
@@ -276,29 +308,98 @@
   .toast { position: fixed; bottom: 2rem; left: 50%; transform: translateX(-50%) translateY(100px); background: var(--forest); color: #fff; padding: 0.75rem 1.5rem; border-radius: 2rem; font-size: 0.82rem; font-weight: 500; z-index: 300; transition: transform 0.3s cubic-bezier(.4,0,.2,1); white-space: nowrap; }
   .toast.show { transform: translateX(-50%) translateY(0); }
 
-  @media (max-width: 1024px) {
-    .chef-bar-quote { display: none; }
-    .chef-stats-inline { display: none; }
+  /* ── HAMBURGER ── */
+  .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 0.25rem; }
+  .hamburger span { display: block; width: 22px; height: 2px; background: var(--crimson); border-radius: 2px; transition: all 0.3s; }
+  .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+  .hamburger.open span:nth-child(2) { opacity: 0; }
+  .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+  .mobile-menu {
+    display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+    background: var(--cream); z-index: 500;
+    flex-direction: column; align-items: center; justify-content: center; gap: 2.5rem;
   }
+  .mobile-menu.open { display: flex; }
+  .mobile-menu-close { position: absolute; top: 1.5rem; right: 1.5rem; background: none; border: none; font-size: 1.8rem; cursor: pointer; color: var(--warm-gray); }
+  .mobile-menu a { font-family: 'Cormorant Garamond', serif; font-size: 2.5rem; font-weight: 700; color: var(--crimson-dark); text-decoration: none; letter-spacing: 0.05em; }
+  .mobile-menu a:hover { color: var(--gold); }
+  .mobile-menu-lang { display: flex; gap: 0; margin-top: 1rem; }
+
   @media (max-width: 900px) {
-    .topbar { padding: 0 1.5rem; }
-    .nav-row { padding: 0.75rem 1.5rem; }
-    .nav-links { display: none; }
-    .chef-bar { padding: 0.55rem 1.5rem; }
-    .chef-bar-quote { display: none; }
-    .chef-stats-inline { display: none; }
-    .hero { grid-template-columns: 1fr; }
-    .hero-right { display: none; }
-    .hero-left { padding: 5rem 2rem 4rem; }
-    section { padding: 3rem 1.5rem; }
-    .features { padding: 3rem 1.5rem; } .features-grid { grid-template-columns: repeat(2,1fr); }
-    .story { grid-template-columns: 1fr; } .story-img { display: none; }
-    .testimonial-grid { grid-template-columns: 1fr; }
-    .footer-top { grid-template-columns: 1fr 1fr; }
-    .cart-panel { width: 100%; }
+    /* HEADER */
+    header { grid-template-columns: 80px 1fr auto; height: 80px; }
+    .header-chef { overflow: hidden; }
+    .header-chef-photo { width: 88px; height: 95px; bottom: 0; }
+    .header-brand { padding: 0.5rem 1rem; gap: 0.25rem; border: none; }
+    .header-logo { font-size: 2rem; }
+    .header-nav-links { display: none; }
+    .header-actions { padding: 0.5rem 1rem; gap: 0.5rem; flex-direction: row; align-items: center; justify-content: flex-end; }
+    .lang-toggle { display: none; }
+    .cart-btn span:not(.cart-count) { display: none; }
+    .cart-btn { padding: 0.5rem 0.75rem; }
+    .hamburger { display: flex; }
+    .header-spacer { height: 80px; }
+
+    /* HERO */
+    .hero { grid-template-columns: 1fr; min-height: auto; }
+    .hero-left { padding: 3rem 1.5rem 2.5rem; }
+    .hero-right { height: 280px; grid-template-columns: repeat(4,1fr); grid-template-rows: repeat(4,1fr); }
+    .spice-tile-name { font-size: 0.52rem; }
+    .spice-tile-emoji { font-size: 1.2rem; }
+
+    /* SECTIONS */
+    section { padding: 2.5rem 1.25rem; }
+    .section-head { flex-direction: column; gap: 0.25rem; }
+
+    /* PRODUCTS */
+    .product-grid { grid-template-columns: 1fr 1fr; gap: 1rem; }
+    .product-img { height: 150px; font-size: 3rem; }
+    .product-body { padding: 0.9rem; }
+    .product-name { font-size: 1.1rem; }
+    .product-desc { font-size: 0.76rem; }
+
+    /* FEATURES */
+    .features { padding: 2.5rem 1.25rem; }
+    .features-grid { grid-template-columns: repeat(2,1fr); gap: 1.25rem; }
+
+    /* STORY */
+    .story { grid-template-columns: 1fr; }
+    .story-img { display: none; }
+    .story-text { padding: 2.5rem 1.25rem; }
+
+    /* CHEF SECTION */
     .chef-section { grid-template-columns: 1fr; }
-    .chef-visual { min-height: 280px; padding: 2rem; align-items: center; }
-    .chef-content { padding: 2.5rem 1.5rem; } .chef-stats { gap: 1.5rem; }
+    .chef-visual { min-height: 260px; padding: 1.5rem; align-items: center; }
+    .chef-avatar-img { width: 180px; height: 180px; font-size: 5rem; }
+    .chef-content { padding: 2rem 1.25rem; }
+    .chef-stats { gap: 1.25rem; flex-wrap: wrap; }
+    .chef-quote { font-size: 1rem; }
+
+    /* TESTIMONIALS */
+    .testimonial-grid { grid-template-columns: 1fr; gap: 1rem; }
+
+    /* FOOTER */
+    .footer-top { grid-template-columns: 1fr; gap: 2rem; padding: 0; }
+    footer { padding: 3rem 1.25rem 2rem; }
+    .footer-bottom { flex-direction: column; gap: 0.5rem; text-align: center; }
+
+    /* CART */
+    .cart-panel { width: 100%; }
+
+    /* SPICE MODAL */
+    .spice-overlay { padding: 1rem; align-items: flex-end; }
+    .spice-modal { border-radius: 1.5rem 1.5rem 0 0; max-width: 100%; }
+
+    /* STRIP */
+    .strip { padding: 0.65rem 0; }
+  }
+
+  @media (max-width: 480px) {
+    .product-grid { grid-template-columns: 1fr; }
+    .features-grid { grid-template-columns: 1fr; }
+    .hero-right { height: 220px; }
+    .spice-tile-name { display: none; }
   }
 </style>
 </head>
@@ -333,8 +434,24 @@
       <span data-i18n="nav.cart"></span>
       <span class="cart-count" id="cart-count">0</span>
     </button>
+    <button class="hamburger" id="hamburger" onclick="toggleMobileMenu()">
+      <span></span><span></span><span></span>
+    </button>
   </div>
 </header>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobile-menu">
+  <button class="mobile-menu-close" onclick="toggleMobileMenu()">✕</button>
+  <a href="#products" data-i18n="nav.spices" onclick="toggleMobileMenu()"></a>
+  <a href="#story" data-i18n="nav.story" onclick="toggleMobileMenu()"></a>
+  <a href="#chef" data-i18n="nav.chef" onclick="toggleMobileMenu()"></a>
+  <a href="#testimonials" data-i18n="nav.reviews" onclick="toggleMobileMenu()"></a>
+  <div class="mobile-menu-lang lang-toggle">
+    <button class="lang-btn active" onclick="setLang('ht');toggleMobileMenu()">KR</button>
+    <button class="lang-btn" onclick="setLang('en');toggleMobileMenu()">EN</button>
+  </div>
+</div>
 
 <div class="header-spacer"></div>
 
@@ -356,16 +473,36 @@
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="width:15px;height:15px;"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
     </button>
   </div>
-  <div class="hero-right">
-    <div class="hero-pattern"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
-    <div class="spice-showcase">
-      <div class="spice-orb spice-orb-1"><span class="orb-emoji">🌶</span><span class="orb-name" data-i18n="orb.1"></span></div>
-      <div class="spice-orb spice-orb-2"><span class="orb-emoji">🌿</span><span class="orb-name" data-i18n="orb.2"></span></div>
-      <div class="spice-orb spice-orb-3"><span class="orb-emoji">🫚</span><span class="orb-name" data-i18n="orb.3"></span></div>
-      <div class="spice-orb spice-orb-4"><span class="orb-emoji">🌰</span><span class="orb-name" data-i18n="orb.4"></span></div>
+  <div class="hero-right" id="spice-grid"></div>
+</section>
+
+<!-- SPICE MODAL -->
+<div class="spice-overlay" id="spice-overlay" onclick="closeSpice(event)">
+  <div class="spice-modal" id="spice-modal">
+    <div class="spice-modal-header">
+      <span class="spice-modal-icon" id="modal-icon"></span>
+      <div class="spice-modal-title-wrap">
+        <div class="spice-modal-name" id="modal-name"></div>
+        <div class="spice-modal-kr" id="modal-kr"></div>
+      </div>
+      <button class="spice-modal-close" onclick="closeSpiceBtn()">✕</button>
+    </div>
+    <div class="spice-modal-body">
+      <div class="spice-modal-section">
+        <h4 id="modal-desc-label"></h4>
+        <p id="modal-desc"></p>
+      </div>
+      <div class="spice-modal-section">
+        <h4 id="modal-uses-label"></h4>
+        <div class="spice-modal-tags" id="modal-uses"></div>
+      </div>
+      <div class="spice-modal-section">
+        <h4 id="modal-benefits-label"></h4>
+        <p id="modal-benefits"></p>
+      </div>
     </div>
   </div>
-</section>
+</div>
 
 <!-- PRODUCTS -->
 <section class="products" id="products">
@@ -452,6 +589,25 @@
     <p style="font-size:0.72rem;letter-spacing:0.1em;color:rgba(250,244,232,0.3);">MIAMI · PÒ-O-PRENS · MONTRÉAL</p>
   </div>
 </footer>
+
+<!-- SPICE MODAL -->
+<div class="spice-overlay" id="spice-overlay" onclick="closeSpice(event)">
+  <div class="spice-modal">
+    <div class="spice-modal-header">
+      <span class="spice-modal-icon" id="modal-icon"></span>
+      <div class="spice-modal-title-wrap">
+        <div class="spice-modal-name" id="modal-name"></div>
+        <div class="spice-modal-kr" id="modal-kr"></div>
+      </div>
+      <button class="spice-modal-close" onclick="closeSpiceBtn()">✕</button>
+    </div>
+    <div class="spice-modal-body">
+      <div class="spice-modal-section"><h4 id="modal-desc-label"></h4><p id="modal-desc"></p></div>
+      <div class="spice-modal-section"><h4 id="modal-uses-label"></h4><div class="spice-modal-tags" id="modal-uses"></div></div>
+      <div class="spice-modal-section"><h4 id="modal-benefits-label"></h4><p id="modal-benefits"></p></div>
+    </div>
+  </div>
+</div>
 
 <!-- CART -->
 <div class="cart-overlay" id="cart-overlay" onclick="toggleCart()"></div>
@@ -674,9 +830,58 @@ function updateCartUI(){
 }
 
 function toggleCart(){document.getElementById('cart-panel').classList.toggle('open');document.getElementById('cart-overlay').classList.toggle('open');}
+function toggleMobileMenu(){
+  document.getElementById('mobile-menu').classList.toggle('open');
+  document.getElementById('hamburger').classList.toggle('open');
+}
 function showToast(msg){const el=document.getElementById('toast');el.textContent=msg;el.classList.add('show');setTimeout(()=>el.classList.remove('show'),2400);}
 
-applyTranslations(); renderProducts(); buildStrip();
+/* ══ 16 HAITIAN SPICES ══ */
+const spices=[
+  {emoji:'🌶️',en:'Scotch Bonnet',ht:'Piman Bouk',bg:'#6B1A0A',desc:{en:'The queen of Haitian cooking. Intensely aromatic with a fruity, floral heat that defines the flavor of countless Haitian dishes.',ht:'Renn kwizin ayisyen an. Yon piman ki gen yon awomat espesyal, chalè fwital ki defini gou anpil plat ayisyen.'},uses:{en:['Griot','Joumou','Chicken stew','Marinade','Pikliz'],ht:['Griyò','Joumou','Poul nan sòs','Marinad','Pikliz']},benefits:{en:'Rich in vitamin C and capsaicin. Boosts metabolism, reduces inflammation, and supports immune health.',ht:'Rich nan vitamin C ak kapsaisin. Ankouraje metabolis, redwi enflamasyon, epi sipòte sistèm iminitè.'}},
+  {emoji:'🌿',en:'Thyme',ht:'Tim',bg:'#1A3D1A',desc:{en:'Haitian thyme grown at high altitude is more potent and fragrant than any commercial variety. Essential in every kitchen.',ht:'Tim ayisyen ki pouse nan wo altitid se pi pwisan ak pi pafime pase tout lòt variete. Esansyèl nan tout kizin.'},uses:{en:['Epis base','Soup','Stews','Rice','Grilled meats'],ht:['Baz epis','Soup','Ragoù','Diri','Vyann griye']},benefits:{en:'Antibacterial and antifungal. High in vitamin K and supports respiratory health.',ht:'Antibakteryèl ak antifongik. Rich nan vitamin K epi sipòte sante respiratwa.'}},
+  {emoji:'🧄',en:'Garlic',ht:'Lay',bg:'#3D3010',desc:{en:'The backbone of Haitian epis. No dish begins without garlic — raw, crushed or slowly cooked in oil.',ht:'Kolòn vètebral epis ayisyen. Pa gen plat ki kòmanse san lay — kri, kraze, oswa kwit dousman nan lwil.'},uses:{en:['Epis base','Griot','All meats','Sauces','Legumes'],ht:['Baz epis','Griyò','Tout vyann','Sòs','Legim']},benefits:{en:'Powerful antioxidant and immune booster. Lowers blood pressure and cholesterol naturally.',ht:'Antioksidan pwisan ak ranfòsè iminite. Bese tansyon ak kolestewòl natirèlman.'}},
+  {emoji:'🫚',en:'Cinnamon',ht:'Kanèl',bg:'#5C2E0A',desc:{en:'Haitian cinnamon adds warmth and depth to both sweet and savory dishes. Used in coffee, desserts and slow-cooked meats.',ht:'Kanèl ayisyen ajoute chalè ak pwofondè nan plat dou ak sale. Itilize nan kafe, dese ak vyann kwit dousman.'},uses:{en:['Haitian coffee','Pain patate','Stews','Herbal teas','Desserts'],ht:['Kafe ayisyen','Pen patat','Ragoù','Tizan','Dese']},benefits:{en:'Regulates blood sugar, anti-inflammatory, loaded with antioxidants. Supports heart health.',ht:'Règle sik nan san, anti-enflamatwa, rich nan antioksidan. Sipòte sante kè.'}},
+  {emoji:'🌱',en:'Parsley',ht:'Pèsi',bg:'#0D3D1A',desc:{en:'Fresh parsley is the green heart of Haitian epis. It brings brightness and freshness that balances the heat of other spices.',ht:'Pèsi fre se kè vèt epis ayisyen. Li pote klète ak frechè ki balanse chalè lòt epis yo.'},uses:{en:['Epis base','Garnish','Sauces','Seafood','Salads'],ht:['Baz epis','Garniti','Sòs','Pwason','Salad']},benefits:{en:'Exceptionally rich in vitamins K, C and A. Supports bone health and acts as a natural diuretic.',ht:'Ekstrèmman rich nan vitamin K, C ak A. Sipòte sante zo epi aji kòm yon diuretik natirèl.'}},
+  {emoji:'🌰',en:'Cloves',ht:'Jiwòf',bg:'#3D1500',desc:{en:'Whole cloves release a deep, warm aroma when cooked. A key spice in Haitian meat marinades and warm drinks.',ht:'Jiwòf antye lage yon odè fon, cho lè yo kwit. Yon epis kle nan marinad vyann ak bwason cho.'},uses:{en:['Meat marinades','Rice collé','Herbal teas','Pumpkin soup','Desserts'],ht:['Marinad vyann','Diri kole','Tizan','Soup joumou','Dese']},benefits:{en:'Powerful antiseptic and pain reliever. Supports digestion and contains eugenol, a natural anesthetic.',ht:'Antiseptik pwisan ak soulajman doulè. Sipòte dijestion epi gen ejijenòl, yon anestezik natirèl.'}},
+  {emoji:'⭐',en:'Star Anise',ht:'Anis Etwal',bg:'#2A1A3D',desc:{en:'These star-shaped pods carry a complex licorice aroma. Central to Haitian herbal teas and certain meat preparations.',ht:'Gous ki gen fòm etwal sa yo pote yon awomat réglise konplèks. Santral nan tizan ayisyen ak kèk preparasyon vyann.'},uses:{en:['Herbal teas','Pork sauces','Goat stew','Desserts','Digestifs'],ht:['Tizan','Sòs kochon','Ragout kabrit','Dese','Dijestif']},benefits:{en:'Antiviral, antibacterial and rich in antioxidants. Relieves bloating and supports digestive health.',ht:'Antiviral, antibakteryèl ak rich nan antioksidan. Soulaje gonfleman epi sipòte sante dijestif.'}},
+  {emoji:'🟤',en:'Cumin',ht:'Kimen',bg:'#4A2800',desc:{en:'Earthy and warm, cumin adds a nutty depth to Haitian taso and beef dishes. Used sparingly but with powerful effect.',ht:'Tè ak cho, kimen ajoute yon pwofondè nwa nan taso ayisyen ak plat bèf. Itilize avèk modèrasyon men ak efè pwisan.'},uses:{en:['Taso','Beef stew','Dry rubs','Rice dishes','Legumes'],ht:['Taso','Ragoù bèf','Frotaj sèk','Plat diri','Legim']},benefits:{en:'Aids digestion and iron absorption. Anti-inflammatory and helps regulate blood sugar levels.',ht:'Ede dijestion ak absòpsyon fè. Anti-enflamatwa epi ede règle nivo sik nan san.'}},
+  {emoji:'⚫',en:'Black Pepper',ht:'Pwav Nwa',bg:'#1A1A1A',desc:{en:'The universal spice of Haitian cooking. Freshly ground Haitian black pepper has a depth and heat that pre-ground pepper cannot match.',ht:'Epis inivèsèl kwizin ayisyen an. Pwav nwa ayisyen moulen fre gen yon pwofondè ak pike ke pwav pre-moulu pa ka matche.'},uses:{en:['All meats','Epis','Sauces','Marinades','Vegetables'],ht:['Tout vyann','Epis','Sòs','Marinad','Legim']},benefits:{en:'Enhances nutrient absorption, especially turmeric. Antioxidant, anti-inflammatory and improves digestion.',ht:'Amelyore absòpsyon eleman nitritif. Antioksidan, anti-enflamatwa epi amelyore dijestion.'}},
+  {emoji:'🫚',en:'Ginger',ht:'Jenjann',bg:'#5C3800',desc:{en:'Fresh and dried ginger adds a bright, spicy warmth to Haitian taso and herbal remedies. A staple of Haitian folk medicine.',ht:'Jenjann fre ak seche ajoute yon chalè klè ak pike nan taso ayisyen ak remèd natirèl. Yon eleman debaz nan medsin tradisyonèl ayisyen.'},uses:{en:['Taso','Herbal teas','Fish dishes','Marinades','Natural remedies'],ht:['Taso','Tizan','Plat pwason','Marinad','Remèd natirèl']},benefits:{en:'Powerful anti-nausea and anti-inflammatory. Boosts immunity and supports digestion and circulation.',ht:'Anti-nozèy ak anti-enflamatwa pwisan. Ranfòse iminite epi sipòte dijestion ak sikilasyon.'}},
+  {emoji:'🌿',en:'Green Onion',ht:'Zonyon Vèt',bg:'#1A4A0A',desc:{en:'One of the foundational aromatics of Haitian epis. Green onions give a mild, sweet onion flavor that blends seamlessly with herbs.',ht:'Youn nan awomat fondamantal epis ayisyen. Zonyon vèt bay yon gou zonyon dou ki melanje san pwoblèm ak zèb.'},uses:{en:['Epis base','Soups','Grilled fish','Garnish','Sauces'],ht:['Baz epis','Soup','Pwason griye','Garniti','Sòs']},benefits:{en:'Rich in vitamin K and antioxidants. Supports bone health, immune function and heart health.',ht:'Rich nan vitamin K ak antioksidan. Sipòte sante zo, fonksyon iminitè ak sante kè.'}},
+  {emoji:'🍋',en:'Lemon',ht:'Sitwon',bg:'#3D3D00',desc:{en:'Haitian cooks use lemon to clean fish and meat, brighten sauces and balance rich flavors. Essential in the pwason blend.',ht:'Kizinye ayisyen itilize sitwon pou netwaye pwason ak vyann, ekleyen sòs epi balanse gou rich. Esansyèl nan melanj pwason.'},uses:{en:['Fish cleaning','Marinades','Sauces','Drinks','Dressings'],ht:['Netwayaj pwason','Marinad','Sòs','Bwason','Vinegrèt']},benefits:{en:'High in vitamin C and citric acid. Supports immunity, aids iron absorption and promotes skin health.',ht:'Rich nan vitamin C ak asid sitrik. Sipòte iminite, ede absòpsyon fè epi ankouraje sante po.'}},
+  {emoji:'🌿',en:'Leek',ht:'Powo',bg:'#1A3A10',desc:{en:'Leek is a signature ingredient across all four Fèl Gou blends. Milder than onion, it adds a delicate sweet depth to every dish.',ht:'Powo se yon engredyan siyati nan kat melanj Fèl Gou yo. Pi dou pase zonyon, li ajoute yon pwofondè dou fen nan chak plat.'},uses:{en:['All Fèl Gou blends','Soups','Stews','Epis','Sauces'],ht:['Tout melanj Fèl Gou','Soup','Ragoù','Epis','Sòs']},benefits:{en:'Rich in folate, vitamin K and antioxidants. Supports heart health and has anti-inflammatory properties.',ht:'Rich nan folat, vitamin K ak antioksidan. Sipòte sante kè epi gen pwopriete anti-enflamatwa.'}},
+  {emoji:'🌿',en:'Rosemary',ht:'Wozmari',bg:'#0A2A1A',desc:{en:'Aromatic and piney, rosemary is the signature herb of the Volay blend. It pairs beautifully with poultry and white meats.',ht:'Awomat ak lodè pin, wozmari se zèb siyati melanj Volay la. Li akonpaye bèlman ak poul ak vyann blanch.'},uses:{en:['Chicken','Turkey','Roasted meats','Herb oils','Marinades'],ht:['Poul','Kòdenn','Vyann woti','Lwil zèb','Marinad']},benefits:{en:'Improves memory and concentration. Antioxidant and anti-inflammatory. Supports hair and scalp health.',ht:'Amelyore memwa ak konsantrasyon. Antioksidan ak anti-enflamatwa. Sipòte sante cheve ak tèt.'}},
+  {emoji:'🌶️',en:'White Pepper',ht:'Pwav Blan',bg:'#3D3020',desc:{en:'Softer and more floral than black pepper, white pepper is the secret behind the smooth heat in the Volay blend.',ht:'Pi dou ak pi floral pase pwav nwa, pwav blan se sekrè dèyè chalè dou nan melanj Volay la.'},uses:{en:['Poultry','Light sauces','Soups','Cream dishes','Fish'],ht:['Poul','Sòs lejè','Soup','Plat krèm','Pwason']},benefits:{en:'Aids digestion and has mild antibacterial properties. Gentler on the stomach than black pepper.',ht:'Ede dijestion epi gen pwopriete antibakteryèl dou. Pi janti sou lestomak pase pwav nwa.'}},
+  {emoji:'🍊',en:'Orange Sure',ht:'Orange Sure',bg:'#5C3000',desc:{en:'A uniquely Haitian ingredient — sour orange juice marinates meats, tenderizes and adds a bright citrus complexity found in no other cuisine.',ht:'Yon engredyan inikman ayisyen — ji zoranj si marinnen vyann, ramoli yo epi ajoute yon konpleksite sitrus ke okenn lòt kwizin pa gen.'},uses:{en:['Griot marinade','Taso','Volay','Poultry','Pork'],ht:['Marinad griyò','Taso','Volay','Poul','Kochon']},benefits:{en:'High in vitamin C and bioflavonoids. Natural meat tenderizer and supports collagen production.',ht:'Rich nan vitamin C ak bioflavonoyid. Ramolisè vyann natirèl epi sipòte pwoduksyon kolagèn.'}}
+];
+
+function buildSpiceGrid(){
+  const grid=document.getElementById('spice-grid');
+  grid.innerHTML=spices.map((s,i)=>`
+    <div class="spice-tile" style="background:${s.bg}" onclick="openSpice(${i})">
+      <span class="spice-tile-emoji">${s.emoji}</span>
+      <span class="spice-tile-name">${lang==='ht'?s.ht:s.en}</span>
+    </div>`).join('');
+}
+
+function openSpice(i){
+  const s=spices[i]; const l=lang;
+  document.getElementById('modal-icon').textContent=s.emoji;
+  document.getElementById('modal-name').textContent=l==='ht'?s.ht:s.en;
+  document.getElementById('modal-kr').textContent=l==='ht'?s.en:s.ht;
+  document.getElementById('modal-desc-label').textContent=l==='ht'?'Deskripsyon':'Description';
+  document.getElementById('modal-desc').textContent=s.desc[l];
+  document.getElementById('modal-uses-label').textContent=l==='ht'?'Itilizasyon':'Uses';
+  document.getElementById('modal-uses').innerHTML=s.uses[l].map(u=>`<span class="spice-tag">${u}</span>`).join('');
+  document.getElementById('modal-benefits-label').textContent=l==='ht'?'Benefis':'Benefits';
+  document.getElementById('modal-benefits').textContent=s.benefits[l];
+  document.getElementById('spice-overlay').classList.add('open');
+}
+function closeSpice(e){if(e.target===document.getElementById('spice-overlay'))closeSpiceBtn();}
+function closeSpiceBtn(){document.getElementById('spice-overlay').classList.remove('open');}
+
+applyTranslations(); renderProducts(); buildStrip(); buildSpiceGrid();
 </script>
 </body>
 </html>
