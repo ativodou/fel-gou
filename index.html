@@ -57,9 +57,9 @@
     overflow: visible;
   }
   .header-chef-photo {
-    position: absolute; bottom: 0; left: 50%;
+    position: absolute; bottom: -20px; left: 50%;
     transform: translateX(-50%);
-    width: 155px; height: 175px;
+    width: 155px; height: 180px;
     object-fit: contain; object-position: bottom;
     mix-blend-mode: multiply;
     z-index: 10; pointer-events: none;
@@ -328,9 +328,9 @@
 
   @media (max-width: 900px) {
     /* HEADER */
-    header { grid-template-columns: 80px 1fr auto; height: 80px; }
+    header { grid-template-columns: 120px 1fr auto; height: 110px; overflow: visible; }
     .header-chef { overflow: hidden; }
-    .header-chef-photo { width: 7px; height: 80px; bottom: 0; }
+    .header-chef-photo { width: 155px; height: 180px; bottom: -20px; mix-blend-mode: multiply; }
     .header-brand { padding: 0.5rem 1rem; gap: 0.25rem; border: none; }
     .header-logo { font-size: 2rem; }
     .header-nav-links { display: none; }
@@ -340,7 +340,7 @@
     .cart-btn span:not(.cart-count) { display: none; }
     .cart-btn { padding: 0.5rem 0.75rem; }
     .hamburger { display: flex; }
-    .header-spacer { height: 80px; }
+    .header-spacer { height: 90px; }
 
     /* HERO */
     .hero { grid-template-columns: 1fr; min-height: auto; }
@@ -634,33 +634,33 @@ const T = {
     'nav.spices':'Epis','nav.story':'Istwa Nou','nav.chef':'Chef Desmornes','nav.reviews':'Opinyon','nav.cart':'Panye',
     'chef.bar.title':'Chèf Ekspè Sertifye · Testè Ofisyèl',
     'chef.bar.quote':'"Kalite se pa opsyon — se pwomès nou a chak kliyan."',
-    'chef.bar.seal':'Chef Tony dakò',
+    'chef.bar.seal':'Apwouve pa Chef Tony',
     'hero.kicker':'✦ Epis Otantik Peyi Dayiti',
-    'hero.line1':'Gou','hero.line2':'Veritab','hero.line3':'Dayiti',
-    'hero.desc':'Epis ki peyizan fè pouse nan mòn Ayiti, seche anba solèy epi kondisyone pou konsève chak nüans gou yo.',
+    'hero.line1':'Gou','hero.line2':'Véritable','hero.line3':'Dayiti',
+    'hero.desc':'Epis ki pouse ak men nan mòn Ayiti, seche anba solèy epi kondisyone pou konsève chak nüans gou yo.',
     'hero.cta':'Dekouvri Epis Nou',
     'orb.1':'Piman Bouk','orb.2':'Epis Vèt','orb.3':'Kanèl','orb.4':'Jiwòf',
-    'products.h1':'Epis','products.h2':'Nou Yo','products.kicker':'Seleksyon Atizanal',
+    'products.h1':'Epis','products.h2':'Nou Yo','products.kicker':'Séleksyon Atizanal',
     'badge.new':'Nouvo','badge.hot':'🔥 Cho','badge.bs':'Pi Vann',
     'p.unit':'/ boutèy','p.add':'+ Ajoute','p.added':'✓ Ajoute','p.chef':'Chef Tony Desmornes',
-    'feat.1.t':'100% Natirèl','feat.1.d':'San pwodui chimik. Sèlman richès nati Ayiti.',
-    'feat.2.t':'Livrezon Rapid','feat.2.d':'Ekspedisyon depi Miami nan mwens ke 48è nan tout Amerik.',
-    'feat.3.t':'Komès Etik','feat.3.d':'Peyizan ayisyen yo resevwa salè ki jis.',
-    'feat.4.t':'Anbalaj Eko','feat.4.d':'Boutèy resiklab.',
-    'story.kicker':'Misyon Nou','story.title':'Nanm Kuizin Ayisyen nan Kuizin Ou',
-    'story.p1':'Fèl Gou — « koupe dwèt » an kreyòl ayisyen — te fèt ak yon sèl désir: pataje trezò awomat Ayiti ak tout mond lan.',
-    'story.p2':'Epis nou yo soti kay agrikiltè nan rejyon Kenskòf, Jakmèl, Okay ak Latibonit. Chak rekòt ap rekolte ak men, seche anba solèy twopikal epi kondisyone pou prezève tout konpleksite awomat li yo.',
-    'story.p3':'Dèyè chak boutèy, gen yon fanmi ayisyen, yon tradisyon zansèt, ak lanmou yon zile jenerè.',
-    'chef.seal':'Chèf\nApwouve','chèf.ribbon':'Chèf Ekspè Sertifye','chef.kicker':'Garanti Kalite',
+    'feat.1.t':'100% Natirèl','feat.1.d':'San pwodwi chimik. Sèlman richès nati Ayiti.',
+    'feat.2.t':'Livrezon Rapid','feat.2.d':'Ekspedisyon depi Miami anba 48è nan tout Amerik.',
+    'feat.3.t':'Komès Etik','feat.3.d':'Agrikiltè ayisyen yo resevwa salè ki jis.',
+    'feat.4.t':'Pakaj Eko','feat.4.d':'Boutèy ki ka itilize ankò, zèro plastik.',
+    'story.kicker':'Misyon Nou','story.title':'Nanm Kwizin Ayisyen nan Kizin Ou',
+    'story.p1':'Fèl Gou — « gou ki fò » an kreyòl ayisyen — te fèt ak yon sèl désir: pataje trezò awomat Ayiti ak tout mond lan.',
+    'story.p2':'Epis nou yo soti nan ti agrikiltè nan rejyon Jakmèl, Okay ak Latibonit. Chak rekòt ap rekolte ak men, seche anba solèy twopikal epi kondisyone pou prezève tout konpleksite awomat li yo.',
+    'story.p3':'Dèyè chak boutèy, gen yon fanmi ayisyen, yon tradisyon santèn, ak lanmou yon zile jenerè.',
+    'chef.seal':'Chef\nApwouve','chef.ribbon':'Chèf Ekspè Sertifye','chef.kicker':'Garanti Kalite',
     'chef.tag':'✦ Chèf Fòme & Dekoré · Testè Ofisyèl Fèl Gou',
-    'chef.bio1':'Chak epis ki vann anba mak Fèl Gou pase anba men ekspè Chèf Tony Desmornes anvan li rive nan kizin ou. Fòme nan pi gwo lekòl kulinè yo epi primé pou travay li sou gastronomie ayisyen kontanporen, Chef Tony se gadyen enfleksib estanda kalite nou yo.',
+    'chef.bio1':'Chak epis ki vann anba mak Fèl Gou pase anba men ekspè Chef Tony Desmornes anvan li rive nan kizin ou. Fòme nan pi gwo lekòl kulinè yo epi primé pou travay li sou gastronomie ayisyen kontanporen, Chef Tony se gadyen enfleksib estanda kalite nou yo.',
     'chef.bio2':'Pwosesis evalyasyon li a gen ladan tès awomat, degustasyon kri, eprèv kwit manje ak verifikasyon orijin. Sèlman lo ki satisfè egzijans li yo resevwa apwobasyon li.',
     'chef.quote':'« Yon epis de kalite, se diferans ant yon plat òdinè ak yon plat memorab. Zansèt nou yo te konn sa. Wòl mwen se pwouve li nan chak boutèy. »',
     'chef.s1':'Ane eksperyans','chef.s2':'Dekorasyon resevwa','chef.s3':'Pwodwi teste',
     'rev.h1':'Yo','rev.h2':'Fè Konfyans Nou','rev.kicker':'Opinyon Verifye',
-    'rev.1.t':'Epis la se egzakteman tankou sa grann mwen te prepare an Ayiti. Yon gou enkwayab, enposib pou jwenn lòt kote nan Etazini.',
-    'rev.2.t':'Piman bouk seche a se yon kalite eksepsyonèl. Jis sa ki fò ak pafimen. Griyò mwen pa t janm te gen bon gou konsa !',
-    'rev.3.t':'M ap kòmande chak mwa depi si mwa. Anbalajla bèl, epis yo fre, sèvis kliyan eksèlan. Mèsi Fèl Gou !',
+    'rev.1.t':'Epis la se egzakteman tankou sa grann mwen te prepare an Ayiti. Yon gou enkwayab, enposib jwenn lòt kote nan Etazini.',
+    'rev.2.t':'Piman bouk seche a se yon kalite eksepsyonèl. Jis sa ki fò ak pafimen. Griyò mwen pa t janm goute konsa !',
+    'rev.3.t':'M ap kòmande chak mwa depi sis mwa. Pakaj la bèl, epis yo fre, sèvis kliyan eksèlan. Mèsi Fèl Gou !',
     'foot.tag':'Epis ayisyen otantik, kiltive ak lanmou, livre nan pòt ou. Gou Ayiti, tout kote nan mond lan.',
     'foot.c1h':'Boutik','foot.c1.1':'Tout epis yo','foot.c1.2':'Bwat kado','foot.c1.3':'Abònman mansyèl','foot.c1.4':'Epis ra',
     'foot.c2h':'Enfòmasyon','foot.c2.1':'Istwa nou','foot.c2.2':'Agrikiltè nou yo','foot.c2.3':'Blòg resèt','foot.c2.4':'Laprès',
@@ -715,7 +715,7 @@ const T = {
 
 const products = {
   ht:[
-    {id:1,name:'Griyo',sub:'Melanj epis espesyal pou fè griyo',emoji:'🥩',origin:'Fèl Gou · Chef Tony Desmornes',desc:'Fòmil familyal espesyal: Orange sure, Powo, Piman bouk, Sèl ak sekrè fanmi nou. Pafè pou griyò kreyòl otantik.',price:12.99,badge:'bs',bg:'#5C3D11',textcolor:'#F5E6C0'},
+    {id:1,name:'Griyo',sub:'Melanj epis pou kochon',emoji:'🥩',origin:'Fèl Gou · Chef Tony Desmornes',desc:'Fòmil familyal espesyal: Orange sure, Powo, Piman bouk, Sèl ak sekrè fanmi nou. Pafè pou griyò kreyòl otantik.',price:12.99,badge:'bs',bg:'#5C3D11',textcolor:'#F5E6C0'},
     {id:2,name:'Pwason',sub:'Melanj epis pou pwason',emoji:'🐟',origin:'Fèl Gou · Chef Tony Desmornes',desc:'Sitwon, Lay, Powo, Piman bouk, Anis, Pèsi ak plis. Fè pwason ou gen yon gou twopikal ki inoublyab.',price:12.99,badge:'new',bg:'#0D1B3E',textcolor:'#C8D8F0'},
     {id:3,name:'Taso',sub:'Melanj epis pou bèf',emoji:'🥩',origin:'Fèl Gou · Chef Tony Desmornes',desc:'Lay, Powo, Orange sure, Sèl, Tim, Pèsi, Kimen, Jenjann, Piman bouk ak sekrè fanmi. Taso ou pa t janm goute sa.',price:12.99,badge:null,bg:'#3D1A0A',textcolor:'#F5E6C0'},
     {id:4,name:'Volay',sub:'Melanj epis pou poul',emoji:'🍗',origin:'Fèl Gou · Chef Tony Desmornes',desc:'Lay, Powo, Piman bouk, Sèl, Pwav blan, Sitwon, Orange sure, Wozmari, Pèsi ak sekrè fanmi. Poul ou a p ap janm goute menm.',price:12.99,badge:'hot',bg:'#1A3D1A',textcolor:'#C8F0C8'},
