@@ -121,7 +121,7 @@
   .hero-cta { display: inline-flex; align-items: center; gap: 0.75rem; background: var(--gold); color: var(--charcoal); padding: 0.9rem 2.2rem; border-radius: 2rem; font-size: 0.82rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; border: none; font-family: 'Jost', sans-serif; cursor: pointer; transition: background 0.2s, transform 0.15s; position: relative; }
   .hero-cta:hover { background: var(--gold-light); transform: translateY(-2px); }
   /* SPICE GRID */
-  .hero-right { background: linear-gradient(135deg, #3D1A0A, #6B2A10 40%, #8B3A1A); position: relative; display: grid; grid-template-columns: repeat(4,1fr); grid-template-rows: repeat(4,1fr); gap: 2px; overflow: hidden; }
+  .hero-right { background: linear-gradient(135deg, #3D1A0A, #6B2A10 40%, #8B3A1A); position: relative; display: grid; grid-template-columns: repeat(5,1fr); grid-template-rows: repeat(4,1fr); gap: 2px; overflow: hidden; }
   .spice-tile {
     display: flex; flex-direction: column; align-items: center; justify-content: center;
     cursor: pointer; padding: 0.5rem;
@@ -330,7 +330,7 @@
     /* HEADER */
     header { grid-template-columns: 120px 1fr auto; height: 110px; overflow: visible; }
     .header-chef { overflow: hidden; }
-    .header-chef-photo { width: 100px; height: 118px; bottom: -10px; mix-blend-mode: multiply; }
+    .header-chef-photo { width: 155px; height: 180px; bottom: -20px; mix-blend-mode: multiply; }
     .header-brand { padding: 0.5rem 1rem; gap: 0.25rem; border: none; }
     .header-logo { font-size: 2rem; }
     .header-nav-links { display: none; }
@@ -345,7 +345,7 @@
     /* HERO */
     .hero { grid-template-columns: 1fr; min-height: auto; }
     .hero-left { padding: 3rem 1.5rem 2.5rem; }
-    .hero-right { height: 280px; grid-template-columns: repeat(4,1fr); grid-template-rows: repeat(4,1fr); }
+    .hero-right { height: 280px; grid-template-columns: repeat(5,1fr); grid-template-rows: repeat(4,1fr); }
     .spice-tile-name { font-size: 0.52rem; }
     .spice-tile-emoji { font-size: 1.2rem; }
 
@@ -872,22 +872,86 @@ function showToast(msg){const el=document.getElementById('toast');el.textContent
 
 /* ══ 16 HAITIAN SPICES ══ */
 const spices=[
-  {emoji:'🌶️',en:'Scotch Bonnet',ht:'Piman Bouk',bg:'#6B1A0A',desc:{en:'The queen of Haitian cooking. Intensely aromatic with a fruity, floral heat that defines the flavor of countless Haitian dishes.',ht:'Renn kwizin ayisyen an. Yon piman ki gen yon awomat espesyal, chalè fwital ki defini gou anpil plat ayisyen.'},uses:{en:['Griot','Joumou','Chicken stew','Marinade','Pikliz'],ht:['Griyò','Joumou','Poul nan sòs','Marinad','Pikliz']},benefits:{en:'Rich in vitamin C and capsaicin. Boosts metabolism, reduces inflammation, and supports immune health.',ht:'Rich nan vitamin C ak kapsaisin. Ankouraje metabolis, redwi enflamasyon, epi sipòte sistèm iminitè.'}},
-  {emoji:'🌿',en:'Thyme',ht:'Tim',bg:'#1A3D1A',desc:{en:'Haitian thyme grown at high altitude is more potent and fragrant than any commercial variety. Essential in every kitchen.',ht:'Tim ayisyen ki pouse nan wo altitid se pi pwisan ak pi pafime pase tout lòt variete. Esansyèl nan tout kizin.'},uses:{en:['Epis base','Soup','Stews','Rice','Grilled meats'],ht:['Baz epis','Soup','Ragoù','Diri','Vyann griye']},benefits:{en:'Antibacterial and antifungal. High in vitamin K and supports respiratory health.',ht:'Antibakteryèl ak antifongik. Rich nan vitamin K epi sipòte sante respiratwa.'}},
-  {emoji:'🧄',en:'Garlic',ht:'Lay',bg:'#3D3010',desc:{en:'The backbone of Haitian epis. No dish begins without garlic — raw, crushed or slowly cooked in oil.',ht:'Kolòn vètebral epis ayisyen. Pa gen plat ki kòmanse san lay — kri, kraze, oswa kwit dousman nan lwil.'},uses:{en:['Epis base','Griot','All meats','Sauces','Legumes'],ht:['Baz epis','Griyò','Tout vyann','Sòs','Legim']},benefits:{en:'Powerful antioxidant and immune booster. Lowers blood pressure and cholesterol naturally.',ht:'Antioksidan pwisan ak ranfòsè iminite. Bese tansyon ak kolestewòl natirèlman.'}},
-  {emoji:'🫚',en:'Cinnamon',ht:'Kanèl',bg:'#5C2E0A',desc:{en:'Haitian cinnamon adds warmth and depth to both sweet and savory dishes. Used in coffee, desserts and slow-cooked meats.',ht:'Kanèl ayisyen ajoute chalè ak pwofondè nan plat dou ak sale. Itilize nan kafe, dese ak vyann kwit dousman.'},uses:{en:['Haitian coffee','Pain patate','Stews','Herbal teas','Desserts'],ht:['Kafe ayisyen','Pen patat','Ragoù','Tizan','Dese']},benefits:{en:'Regulates blood sugar, anti-inflammatory, loaded with antioxidants. Supports heart health.',ht:'Règle sik nan san, anti-enflamatwa, rich nan antioksidan. Sipòte sante kè.'}},
-  {emoji:'🌱',en:'Parsley',ht:'Pèsi',bg:'#0D3D1A',desc:{en:'Fresh parsley is the green heart of Haitian epis. It brings brightness and freshness that balances the heat of other spices.',ht:'Pèsi fre se kè vèt epis ayisyen. Li pote klète ak frechè ki balanse chalè lòt epis yo.'},uses:{en:['Epis base','Garnish','Sauces','Seafood','Salads'],ht:['Baz epis','Garniti','Sòs','Pwason','Salad']},benefits:{en:'Exceptionally rich in vitamins K, C and A. Supports bone health and acts as a natural diuretic.',ht:'Ekstrèmman rich nan vitamin K, C ak A. Sipòte sante zo epi aji kòm yon diuretik natirèl.'}},
-  {emoji:'🌰',en:'Cloves',ht:'Jiwòf',bg:'#3D1500',desc:{en:'Whole cloves release a deep, warm aroma when cooked. A key spice in Haitian meat marinades and warm drinks.',ht:'Jiwòf antye lage yon odè fon, cho lè yo kwit. Yon epis kle nan marinad vyann ak bwason cho.'},uses:{en:['Meat marinades','Rice collé','Herbal teas','Pumpkin soup','Desserts'],ht:['Marinad vyann','Diri kole','Tizan','Soup joumou','Dese']},benefits:{en:'Powerful antiseptic and pain reliever. Supports digestion and contains eugenol, a natural anesthetic.',ht:'Antiseptik pwisan ak soulajman doulè. Sipòte dijestion epi gen ejijenòl, yon anestezik natirèl.'}},
-  {emoji:'⭐',en:'Star Anise',ht:'Anis Etwal',bg:'#2A1A3D',desc:{en:'These star-shaped pods carry a complex licorice aroma. Central to Haitian herbal teas and certain meat preparations.',ht:'Gous ki gen fòm etwal sa yo pote yon awomat réglise konplèks. Santral nan tizan ayisyen ak kèk preparasyon vyann.'},uses:{en:['Herbal teas','Pork sauces','Goat stew','Desserts','Digestifs'],ht:['Tizan','Sòs kochon','Ragout kabrit','Dese','Dijestif']},benefits:{en:'Antiviral, antibacterial and rich in antioxidants. Relieves bloating and supports digestive health.',ht:'Antiviral, antibakteryèl ak rich nan antioksidan. Soulaje gonfleman epi sipòte sante dijestif.'}},
-  {emoji:'🟤',en:'Cumin',ht:'Kimen',bg:'#4A2800',desc:{en:'Earthy and warm, cumin adds a nutty depth to Haitian taso and beef dishes. Used sparingly but with powerful effect.',ht:'Tè ak cho, kimen ajoute yon pwofondè nwa nan taso ayisyen ak plat bèf. Itilize avèk modèrasyon men ak efè pwisan.'},uses:{en:['Taso','Beef stew','Dry rubs','Rice dishes','Legumes'],ht:['Taso','Ragoù bèf','Frotaj sèk','Plat diri','Legim']},benefits:{en:'Aids digestion and iron absorption. Anti-inflammatory and helps regulate blood sugar levels.',ht:'Ede dijestion ak absòpsyon fè. Anti-enflamatwa epi ede règle nivo sik nan san.'}},
-  {emoji:'⚫',en:'Black Pepper',ht:'Pwav Nwa',bg:'#1A1A1A',desc:{en:'The universal spice of Haitian cooking. Freshly ground Haitian black pepper has a depth and heat that pre-ground pepper cannot match.',ht:'Epis inivèsèl kwizin ayisyen an. Pwav nwa ayisyen moulen fre gen yon pwofondè ak pike ke pwav pre-moulu pa ka matche.'},uses:{en:['All meats','Epis','Sauces','Marinades','Vegetables'],ht:['Tout vyann','Epis','Sòs','Marinad','Legim']},benefits:{en:'Enhances nutrient absorption, especially turmeric. Antioxidant, anti-inflammatory and improves digestion.',ht:'Amelyore absòpsyon eleman nitritif. Antioksidan, anti-enflamatwa epi amelyore dijestion.'}},
-  {emoji:'🫚',en:'Ginger',ht:'Jenjann',bg:'#5C3800',desc:{en:'Fresh and dried ginger adds a bright, spicy warmth to Haitian taso and herbal remedies. A staple of Haitian folk medicine.',ht:'Jenjann fre ak seche ajoute yon chalè klè ak pike nan taso ayisyen ak remèd natirèl. Yon eleman debaz nan medsin tradisyonèl ayisyen.'},uses:{en:['Taso','Herbal teas','Fish dishes','Marinades','Natural remedies'],ht:['Taso','Tizan','Plat pwason','Marinad','Remèd natirèl']},benefits:{en:'Powerful anti-nausea and anti-inflammatory. Boosts immunity and supports digestion and circulation.',ht:'Anti-nozèy ak anti-enflamatwa pwisan. Ranfòse iminite epi sipòte dijestion ak sikilasyon.'}},
-  {emoji:'🌿',en:'Green Onion',ht:'Zonyon Vèt',bg:'#1A4A0A',desc:{en:'One of the foundational aromatics of Haitian epis. Green onions give a mild, sweet onion flavor that blends seamlessly with herbs.',ht:'Youn nan awomat fondamantal epis ayisyen. Zonyon vèt bay yon gou zonyon dou ki melanje san pwoblèm ak zèb.'},uses:{en:['Epis base','Soups','Grilled fish','Garnish','Sauces'],ht:['Baz epis','Soup','Pwason griye','Garniti','Sòs']},benefits:{en:'Rich in vitamin K and antioxidants. Supports bone health, immune function and heart health.',ht:'Rich nan vitamin K ak antioksidan. Sipòte sante zo, fonksyon iminitè ak sante kè.'}},
-  {emoji:'🍋',en:'Lemon',ht:'Sitwon',bg:'#3D3D00',desc:{en:'Haitian cooks use lemon to clean fish and meat, brighten sauces and balance rich flavors. Essential in the pwason blend.',ht:'Kizinye ayisyen itilize sitwon pou netwaye pwason ak vyann, ekleyen sòs epi balanse gou rich. Esansyèl nan melanj pwason.'},uses:{en:['Fish cleaning','Marinades','Sauces','Drinks','Dressings'],ht:['Netwayaj pwason','Marinad','Sòs','Bwason','Vinegrèt']},benefits:{en:'High in vitamin C and citric acid. Supports immunity, aids iron absorption and promotes skin health.',ht:'Rich nan vitamin C ak asid sitrik. Sipòte iminite, ede absòpsyon fè epi ankouraje sante po.'}},
-  {emoji:'🌿',en:'Leek',ht:'Powo',bg:'#1A3A10',desc:{en:'Leek is a signature ingredient across all four Fèl Gou blends. Milder than onion, it adds a delicate sweet depth to every dish.',ht:'Powo se yon engredyan siyati nan kat melanj Fèl Gou yo. Pi dou pase zonyon, li ajoute yon pwofondè dou fen nan chak plat.'},uses:{en:['All Fèl Gou blends','Soups','Stews','Epis','Sauces'],ht:['Tout melanj Fèl Gou','Soup','Ragoù','Epis','Sòs']},benefits:{en:'Rich in folate, vitamin K and antioxidants. Supports heart health and has anti-inflammatory properties.',ht:'Rich nan folat, vitamin K ak antioksidan. Sipòte sante kè epi gen pwopriete anti-enflamatwa.'}},
-  {emoji:'🌿',en:'Rosemary',ht:'Wozmari',bg:'#0A2A1A',desc:{en:'Aromatic and piney, rosemary is the signature herb of the Volay blend. It pairs beautifully with poultry and white meats.',ht:'Awomat ak lodè pin, wozmari se zèb siyati melanj Volay la. Li akonpaye bèlman ak poul ak vyann blanch.'},uses:{en:['Chicken','Turkey','Roasted meats','Herb oils','Marinades'],ht:['Poul','Kòdenn','Vyann woti','Lwil zèb','Marinad']},benefits:{en:'Improves memory and concentration. Antioxidant and anti-inflammatory. Supports hair and scalp health.',ht:'Amelyore memwa ak konsantrasyon. Antioksidan ak anti-enflamatwa. Sipòte sante cheve ak tèt.'}},
-  {emoji:'🌶️',en:'White Pepper',ht:'Pwav Blan',bg:'#3D3020',desc:{en:'Softer and more floral than black pepper, white pepper is the secret behind the smooth heat in the Volay blend.',ht:'Pi dou ak pi floral pase pwav nwa, pwav blan se sekrè dèyè chalè dou nan melanj Volay la.'},uses:{en:['Poultry','Light sauces','Soups','Cream dishes','Fish'],ht:['Poul','Sòs lejè','Soup','Plat krèm','Pwason']},benefits:{en:'Aids digestion and has mild antibacterial properties. Gentler on the stomach than black pepper.',ht:'Ede dijestion epi gen pwopriete antibakteryèl dou. Pi janti sou lestomak pase pwav nwa.'}},
-  {emoji:'🍊',en:'Orange Sure',ht:'Orange Sure',bg:'#5C3000',desc:{en:'A uniquely Haitian ingredient — sour orange juice marinates meats, tenderizes and adds a bright citrus complexity found in no other cuisine.',ht:'Yon engredyan inikman ayisyen — ji zoranj si marinnen vyann, ramoli yo epi ajoute yon konpleksite sitrus ke okenn lòt kwizin pa gen.'},uses:{en:['Griot marinade','Taso','Volay','Poultry','Pork'],ht:['Marinad griyò','Taso','Volay','Poul','Kochon']},benefits:{en:'High in vitamin C and bioflavonoids. Natural meat tenderizer and supports collagen production.',ht:'Rich nan vitamin C ak bioflavonoyid. Ramolisè vyann natirèl epi sipòte pwoduksyon kolagèn.'}}
+  {emoji:'🌶️',en:'Scotch Bonnet',ht:'Piman Bouk',bg:'#6B1A0A',
+    desc:{en:'The queen of Haitian cooking. Intensely aromatic with a fruity, floral heat that defines the flavor of countless Haitian dishes.',ht:'Renn kwizin ayisyen an. Yon piman ki gen yon awomat espesyal, chalè fwital ki defini gou anpil plat ayisyen.'},
+    uses:{en:['Griot','Joumou','Chicken stew','Marinade','Pikliz'],ht:['Griyò','Joumou','Poul nan sòs','Marinad','Pikliz']},
+    benefits:{en:'Rich in vitamin C and capsaicin. Boosts metabolism, reduces inflammation, and supports immune health.',ht:'Rich nan vitamin C ak kapsaisin. Ankouraje metabolis, redwi enflamasyon, epi sipòte sistèm iminitè.'}},
+  {emoji:'🧄',en:'Garlic',ht:'Lay',bg:'#3D3010',
+    desc:{en:'The backbone of Haitian epis. No dish begins without garlic — raw, crushed or slowly cooked in oil.',ht:'Kolòn vètebral epis ayisyen. Pa gen plat ki kòmanse san lay — kri, kraze, oswa kwit dousman nan lwil.'},
+    uses:{en:['Epis base','Griot','All meats','Sauces','Legumes'],ht:['Baz epis','Griyò','Tout vyann','Sòs','Legim']},
+    benefits:{en:'Powerful antioxidant and immune booster. Lowers blood pressure and cholesterol naturally.',ht:'Antioksidan pwisan ak ranfòsè iminite. Bese tansyon ak kolestewòl natirèlman.'}},
+  {emoji:'🧂',en:'Sea Salt',ht:'Sèl Lanmè',bg:'#3A3A4A',
+    desc:{en:'Haitian sea salt harvested from the southern coast. Coarser and richer in minerals than commercial table salt, it elevates every dish.',ht:'Sèl lanmè ayisyen ki rekòlte nan kòt sid la. Pi gwo ak pi rich nan mineral pase sèl komèsyal, li amelyore chak plat.'},
+    uses:{en:['All dishes','Marinades','Preserving','Seasoning','Pikliz'],ht:['Tout plat','Marinad','Konsèvasyon','Asezonnman','Pikliz']},
+    benefits:{en:'Rich in natural minerals including magnesium and potassium. Supports hydration and electrolyte balance.',ht:'Rich nan mineral natirèl tankou maynezyòm ak potasyòm. Sipòte idrasyon ak balans elektwolit.'}},
+  {emoji:'⚫',en:'Black Pepper',ht:'Pwav Nwa',bg:'#1A1A1A',
+    desc:{en:'The universal spice of Haitian cooking. Freshly ground Haitian black pepper has a depth and heat that pre-ground pepper cannot match.',ht:'Epis inivèsèl kwizin ayisyen an. Pwav nwa ayisyen moulen fre gen yon pwofondè ak pike ke pwav pre-moulu pa ka matche.'},
+    uses:{en:['All meats','Epis','Sauces','Marinades','Vegetables'],ht:['Tout vyann','Epis','Sòs','Marinad','Legim']},
+    benefits:{en:'Enhances nutrient absorption. Antioxidant, anti-inflammatory and improves digestion.',ht:'Amelyore absòpsyon eleman nitritif. Antioksidan, anti-enflamatwa epi amelyore dijestion.'}},
+  {emoji:'🍊',en:'Sour Orange',ht:'Zoranj Su',bg:'#5C3000',
+    desc:{en:'A uniquely Haitian ingredient — sour orange juice marinates meats, tenderizes and adds a bright citrus complexity found in no other cuisine.',ht:'Yon engredyan inikman ayisyen — ji zoranj si marinnen vyann, ramoli yo epi ajoute yon konpleksite sitrus ke okenn lòt kwizin pa gen.'},
+    uses:{en:['Griot marinade','Taso','Volay','Poultry','Pork'],ht:['Marinad griyò','Taso','Volay','Poul','Kochon']},
+    benefits:{en:'High in vitamin C and bioflavonoids. Natural meat tenderizer and supports collagen production.',ht:'Rich nan vitamin C ak bioflavonoyid. Ramolisè vyann natirèl epi sipòte pwoduksyon kolagèn.'}},
+  {emoji:'🍋',en:'Lime',ht:'Sitwon',bg:'#2A3D00',
+    desc:{en:'Haitian cooks use lime to clean fish and meat, brighten sauces and balance rich flavors. Essential in the pwason blend.',ht:'Kizinye ayisyen itilize sitwon pou netwaye pwason ak vyann, ekleyen sòs epi balanse gou rich. Esansyèl nan melanj pwason.'},
+    uses:{en:['Fish cleaning','Marinades','Sauces','Drinks','Dressings'],ht:['Netwayaj pwason','Marinad','Sòs','Bwason','Vinegrèt']},
+    benefits:{en:'High in vitamin C and citric acid. Supports immunity, aids iron absorption and promotes skin health.',ht:'Rich nan vitamin C ak asid sitrik. Sipòte iminite, ede absòpsyon fè epi ankouraje sante po.'}},
+  {emoji:'🧅',en:'Onion',ht:'Zonyon',bg:'#5C4010',
+    desc:{en:'The sweet, savory foundation of Haitian cuisine. Onions are caramelized, raw in epis, or charred over flame to add layers of flavor.',ht:'Fondasyon dou ak savourè kwizin ayisyen an. Zonyon karamelizé, kri nan epis, oswa griye sou flanm pou ajoute kouch gou.'},
+    uses:{en:['Epis base','All stews','Rice dishes','Sauces','Legumes'],ht:['Baz epis','Tout ragoù','Plat diri','Sòs','Legim']},
+    benefits:{en:'Rich in quercetin and antioxidants. Anti-inflammatory, supports heart health and immune function.',ht:'Rich nan kèsètin ak antioksidan. Anti-enflamatwa, sipòte sante kè ak fonksyon iminitè.'}},
+  {emoji:'🌿',en:'Green Onion',ht:'Pwaro',bg:'#1A4A0A',
+    desc:{en:'Scallions are one of the foundational aromatics of Haitian epis. They give a fresh, mild onion flavor that blends seamlessly with herbs.',ht:'Pwaro se youn nan awomat fondamantal epis ayisyen. Li bay yon gou zonyon fre, dou ki melanje san pwoblèm ak zèb.'},
+    uses:{en:['Epis base','Soups','Grilled fish','Garnish','Sauces'],ht:['Baz epis','Soup','Pwason griye','Garniti','Sòs']},
+    benefits:{en:'Rich in vitamin K and antioxidants. Supports bone health, immune function and heart health.',ht:'Rich nan vitamin K ak antioksidan. Sipòte sante zo, fonksyon iminitè ak sante kè.'}},
+  {emoji:'🌱',en:'Parsley',ht:'Pèsi',bg:'#0D3D1A',
+    desc:{en:'Fresh parsley is the green heart of Haitian epis. It brings brightness and freshness that balances the heat of other spices.',ht:'Pèsi fre se kè vèt epis ayisyen. Li pote klète ak frechè ki balanse chalè lòt epis yo.'},
+    uses:{en:['Epis base','Garnish','Sauces','Seafood','Salads'],ht:['Baz epis','Garniti','Sòs','Pwason','Salad']},
+    benefits:{en:'Exceptionally rich in vitamins K, C and A. Supports bone health and acts as a natural diuretic.',ht:'Ekstrèmman rich nan vitamin K, C ak A. Sipòte sante zo epi aji kòm yon diuretik natirèl.'}},
+  {emoji:'🌿',en:'Thyme',ht:'Tim',bg:'#1A3D1A',
+    desc:{en:'Haitian thyme grown at high altitude is more potent and fragrant than any commercial variety. Essential in every kitchen.',ht:'Tim ayisyen ki pouse nan wo altitid se pi pwisan ak pi pafime pase tout lòt variete. Esansyèl nan tout kizin.'},
+    uses:{en:['Epis base','Soup Joumou','Stews','Rice','Grilled meats'],ht:['Baz epis','Soup joumou','Ragoù','Diri','Vyann griye']},
+    benefits:{en:'Antibacterial and antifungal. High in vitamin K and supports respiratory health.',ht:'Antibakteryèl ak antifongik. Rich nan vitamin K epi sipòte sante respiratwa.'}},
+  {emoji:'🧅',en:'Shallot',ht:'Echalòt',bg:'#4A2A10',
+    desc:{en:'More refined than regular onion, shallots add a gentle, sweet depth to Haitian epis and sauces without overpowering other flavors.',ht:'Pi rafine pase zonyon òdinè, echalòt ajoute yon pwofondè dou ak janti nan epis ak sòs ayisyen san li pa domine lòt gou yo.'},
+    uses:{en:['Epis base','Fine sauces','Fish dishes','Vinaigrettes','Stews'],ht:['Baz epis','Sòs fen','Plat pwason','Vinegrèt','Ragoù']},
+    benefits:{en:'Rich in antioxidants and allicin. Supports cardiovascular health and has anti-bacterial properties.',ht:'Rich nan antioksidan ak alisin. Sipòte sante kadyovaskilè epi gen pwopriete anti-bakteryèl.'}},
+  {emoji:'🌿',en:'Rosemary',ht:'Romaren',bg:'#0A2A1A',
+    desc:{en:'Aromatic and piney, rosemary is the signature herb of the Volay blend. It pairs beautifully with poultry and white meats.',ht:'Awomat ak lodè pin, romaren se zèb siyati melanj Volay la. Li akonpaye bèlman ak poul ak vyann blanch.'},
+    uses:{en:['Chicken','Turkey','Roasted meats','Herb oils','Marinades'],ht:['Poul','Kòdenn','Vyann woti','Lwil zèb','Marinad']},
+    benefits:{en:'Improves memory and concentration. Antioxidant and anti-inflammatory. Supports hair and scalp health.',ht:'Amelyore memwa ak konsantrasyon. Antioksidan ak anti-enflamatwa. Sipòte sante cheve ak tèt.'}},
+  {emoji:'🌰',en:'Cloves',ht:'Jiwòf',bg:'#3D1500',
+    desc:{en:'Whole cloves release a deep, warm aroma when cooked. A key spice in Haitian meat marinades and warm drinks.',ht:'Jiwòf antye lage yon odè fon, cho lè yo kwit. Yon epis kle nan marinad vyann ak bwason cho.'},
+    uses:{en:['Meat marinades','Rice collé','Herbal teas','Soup Joumou','Desserts'],ht:['Marinad vyann','Diri kole','Tizan','Soup joumou','Dese']},
+    benefits:{en:'Powerful antiseptic and pain reliever. Supports digestion and contains eugenol, a natural anesthetic.',ht:'Antiseptik pwisan ak soulajman doulè. Sipòte dijestion epi gen ejijenòl, yon anestezik natirèl.'}},
+  {emoji:'🥥',en:'Coconut',ht:'Kokoye',bg:'#3D2A00',
+    desc:{en:'Haitian coconut — raw, dried, or as coconut milk — is essential in rice dishes, desserts, and coastal cooking. Rich, creamy and unmistakably tropical.',ht:'Kokoye ayisyen — kri, seche, oswa kòm lèt kokoye — esansyèl nan plat diri, dese, ak kwizin kòtye. Rich, krèmye ak twopikal san ekivòk.'},
+    uses:{en:['Diri ak djon djon','Legume','Desserts','Pain patate','Coastal fish'],ht:['Diri ak djon djon','Legim','Dese','Pen patat','Pwason kòtye']},
+    benefits:{en:'Rich in healthy fats, medium-chain triglycerides and lauric acid. Supports brain function and immunity.',ht:'Rich nan grès sante, trigliserid chèn mwayen ak asid lorik. Sipòte fonksyon sèvo ak iminite.'}},
+  {emoji:'🟤',en:'Cumin',ht:'Kimen',bg:'#4A2800',
+    desc:{en:'Earthy and warm, cumin adds a nutty depth to Haitian taso and beef dishes. Used sparingly but with powerful effect.',ht:'Tè ak cho, kimen ajoute yon pwofondè nwa nan taso ayisyen ak plat bèf. Itilize avèk modèrasyon men ak efè pwisan.'},
+    uses:{en:['Taso','Beef stew','Dry rubs','Rice dishes','Legumes'],ht:['Taso','Ragoù bèf','Frotaj sèk','Plat diri','Legim']},
+    benefits:{en:'Aids digestion and iron absorption. Anti-inflammatory and helps regulate blood sugar levels.',ht:'Ede dijestion ak absòpsyon fè. Anti-enflamatwa epi ede règle nivo sik nan san.'}},
+  {emoji:'⭐',en:'Star Anise',ht:'Anis Etwale',bg:'#2A1A3D',
+    desc:{en:'These star-shaped pods carry a complex licorice aroma. Central to Haitian herbal teas and certain meat preparations.',ht:'Gous ki gen fòm etwal sa yo pote yon awomat réglise konplèks. Santral nan tizan ayisyen ak kèk preparasyon vyann.'},
+    uses:{en:['Herbal teas','Pork sauces','Goat stew','Desserts','Digestifs'],ht:['Tizan','Sòs kochon','Ragout kabrit','Dese','Dijestif']},
+    benefits:{en:'Antiviral, antibacterial and rich in antioxidants. Relieves bloating and supports digestive health.',ht:'Antiviral, antibakteryèl ak rich nan antioksidan. Soulaje gonfleman epi sipòte sante dijestif.'}},
+  {emoji:'🫚',en:'Cinnamon',ht:'Kanèl',bg:'#5C2E0A',
+    desc:{en:'Haitian cinnamon adds warmth and depth to both sweet and savory dishes. Used in coffee, desserts and slow-cooked meats.',ht:'Kanèl ayisyen ajoute chalè ak pwofondè nan plat dou ak sale. Itilize nan kafe, dese ak vyann kwit dousman.'},
+    uses:{en:['Haitian coffee','Pain patate','Stews','Herbal teas','Desserts'],ht:['Kafe ayisyen','Pen patat','Ragoù','Tizan','Dese']},
+    benefits:{en:'Regulates blood sugar, anti-inflammatory, loaded with antioxidants. Supports heart health.',ht:'Règle sik nan san, anti-enflamatwa, rich nan antioksidan. Sipòte sante kè.'}},
+  {emoji:'🌰',en:'Nutmeg',ht:'Muskad',bg:'#4A1A00',
+    desc:{en:'Haitian nutmeg adds a warm, slightly sweet and nutty dimension to both sweet and savory Haitian dishes — especially in pain patate and holiday drinks.',ht:'Muskad ayisyen ajoute yon dimansyon cho, yon ti dou ak savè nwa nan plat ayisyen dou ak sale — espesyalman nan pen patat ak bwason fèt.'},
+    uses:{en:['Pain patate','Haitian eggnog','Desserts','Warm drinks','Spice blends'],ht:['Pen patat','Kremas','Dese','Bwason cho','Melanj epis']},
+    benefits:{en:'Rich in antioxidants and anti-inflammatory compounds. Supports brain health and aids digestion.',ht:'Rich nan antioksidan ak konpoze anti-enflamatwa. Sipòte sante sèvo epi ede dijestion.'}},
+  {emoji:'🌸',en:'Vanilla',ht:'Vaniy',bg:'#3D2010',
+    desc:{en:'Haitian vanilla is among the finest in the world — rich, floral and complex. Used in desserts, kremas, and Haitian coffee for an unmistakable aromatic depth.',ht:'Vaniy ayisyen se youn nan pi bon nan mond lan — rich, floral ak konplèks. Itilize nan dese, kremas, ak kafe ayisyen pou yon pwofondè awomat san parèy.'},
+    uses:{en:['Kremas','Desserts','Haitian coffee','Pain patate','Ice cream'],ht:['Kremas','Dese','Kafe ayisyen','Pen patat','Krèm glase']},
+    benefits:{en:'Contains vanillin, a powerful antioxidant. May reduce anxiety, support mental health and anti-inflammatory.',ht:'Kontenyen vanilin, yon antioksidan pwisan. Ka redwi lènmi, sipòte sante mantal ak anti-enflamatwa.'}},
+  {emoji:'🐟',en:'Tritri',ht:'Tritri',bg:'#1A2A3D',
+    desc:{en:'Tritri — tiny dried fish or shrimp larvae — is a uniquely Haitian ingredient that adds a deep, umami-rich seafood flavor to rice dishes, sauces, and stews. Irreplaceable in Haitian coastal cooking.',ht:'Tritri — ti pwason oswa lav kribich seche — se yon engredyan inikman ayisyen ki ajoute yon gou maren rich ak umami nan plat diri, sòs, ak ragoù. Enplaçable nan kwizin kòtye ayisyen.'},
+    uses:{en:['Diri ak tritri','Coastal stews','Rice dishes','Sauces','Legumes'],ht:['Diri ak tritri','Ragoù kòtye','Plat diri','Sòs','Legim']},
+    benefits:{en:'Excellent source of protein, calcium and omega-3 fatty acids. Supports bone health and cardiovascular function.',ht:'Ekselant sous pwoteyin, kalsyòm ak asid gra omega-3. Sipòte sante zo ak fonksyon kadyovaskilè.'}}
 ];
 
 function buildSpiceGrid(){
