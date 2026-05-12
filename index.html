@@ -763,7 +763,7 @@ const products = {
   ]
 };
 
-let lang='ht', cart={};
+let lang='ht', cart=JSON.parse(localStorage.getItem('felgou_cart')||'{}');
 const t = k => T[lang][k]||'';
 
 function applyTranslations(){
@@ -862,6 +862,7 @@ function removeFromCart(id){delete cart[id];updateCartUI();}
 function updateQty(id,d){if(!cart[id])return;cart[id].qty+=d;if(cart[id].qty<=0)delete cart[id];updateCartUI();}
 
 function updateCartUI(){
+  localStorage.setItem('felgou_cart',JSON.stringify(cart));
   const total=Object.values(cart).reduce((s,i)=>s+i.price*i.qty,0);
   const count=Object.values(cart).reduce((s,i)=>s+i.qty,0);
   document.getElementById('cart-count').textContent=count;
