@@ -49,20 +49,17 @@
     overflow: visible;
   }
 
-  /* LEFT — Chef Tony photo only, no background */
+  /* LEFT — Fèl Gou logo */
   .header-chef {
     position: relative;
-    display: flex; align-items: flex-end; justify-content: center;
+    display: flex; align-items: center; justify-content: center;
     background: none;
     overflow: visible;
   }
   .header-chef-photo {
-    position: absolute; bottom: -20px; left: 50%;
-    transform: translateX(-50%);
-    width: 155px; height: 180px;
-    object-fit: contain; object-position: bottom;
-    mix-blend-mode: multiply;
-    z-index: 10; pointer-events: none;
+    width: 120px; height: 120px;
+    object-fit: contain;
+    z-index: 10;
   }
 
   /* CENTER — Brand + Nav */
@@ -454,9 +451,9 @@
 
 <!-- ── HEADER ── -->
 <header>
-  <!-- LEFT: Chef Tony photo only -->
+  <!-- LEFT: Fèl Gou logo -->
   <div class="header-chef">
-    <img class="header-chef-photo" src="images/chef-tony.png" alt="Chef Tony Desmornes">
+    <img class="header-chef-photo" src="images/fel gou.png" alt="Fèl Gou">
   </div>
 
   <!-- CENTER: Brand + Nav -->
