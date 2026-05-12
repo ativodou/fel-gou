@@ -1017,7 +1017,7 @@ function openSpice(i){
 function closeSpice(e){if(e.target===document.getElementById('spice-overlay'))closeSpiceBtn();}
 function closeSpiceBtn(){document.getElementById('spice-overlay').classList.remove('open');}
 
-applyTranslations(); renderProducts(); buildStrip(); buildSpiceGrid();
+applyTranslations(); renderProducts(); buildStrip(); buildSpiceGrid(); updateCartUI();
 
 async function startCheckout() {
   const btn = document.getElementById('checkout-btn-el');
