@@ -454,6 +454,24 @@
     .hero-right { height: 220px; }
     .spice-tile-name { display: none; }
   }
+
+  /* RESÈT GRANN */
+  .grann-section { background: var(--cream-dark); padding: 5rem; border-top: 2px solid rgba(200,137,26,0.2); }
+  .grann-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(290px, 1fr)); gap: 1.75rem; }
+  .recipe-card { background: var(--cream); border: 1px solid rgba(200,137,26,0.2); border-radius: 3px; overflow: hidden; }
+  .recipe-card-top { padding: 1.5rem 1.5rem 1.25rem; border-bottom: 1px solid rgba(200,137,26,0.15); }
+  .recipe-emoji { font-size: 1.8rem; margin-bottom: 0.6rem; display: block; }
+  .recipe-name { font-family: 'Cormorant Garamond', serif; font-size: 1.4rem; font-weight: 700; color: var(--crimson-dark); margin-bottom: 0.15rem; }
+  .recipe-sub { font-size: 0.62rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--warm-gray); display: block; margin-bottom: 0.6rem; }
+  .recipe-meta { display: flex; gap: 1rem; }
+  .recipe-meta span { font-size: 0.7rem; color: var(--gold); font-weight: 600; letter-spacing: 0.05em; }
+  .recipe-body { padding: 1.25rem 1.5rem 1.5rem; }
+  .recipe-label { font-size: 0.62rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--crimson); font-weight: 600; margin-bottom: 0.4rem; display: block; }
+  .recipe-ingredients { font-size: 0.83rem; line-height: 1.85; color: var(--text-body); margin-bottom: 1rem; }
+  .recipe-steps { font-size: 0.83rem; line-height: 1.85; color: var(--text-body); padding-left: 1rem; margin-bottom: 1.1rem; }
+  .recipe-steps li { margin-bottom: 0.2rem; }
+  .recipe-spice-tag { display: inline-block; font-size: 0.64rem; letter-spacing: 0.12em; text-transform: uppercase; background: var(--crimson); color: var(--cream); padding: 0.28rem 0.75rem; border-radius: 2rem; }
+  @media (max-width: 768px) { .grann-section { padding: 2.5rem 1.25rem; } .grann-grid { grid-template-columns: 1fr; } }
 </style>
 </head>
 <body>
@@ -473,6 +491,7 @@
       <li><a href="#products" data-i18n="nav.spices"></a></li>
       <li><a href="#story" data-i18n="nav.story"></a></li>
       <li><a href="#chef" data-i18n="nav.chef"></a></li>
+      <li><a href="#grann" data-i18n="nav.grann"></a></li>
       <li><a href="#testimonials" data-i18n="nav.reviews"></a></li>
     </ul>
   </div>
@@ -500,6 +519,7 @@
   <a href="#products" data-i18n="nav.spices" onclick="toggleMobileMenu()"></a>
   <a href="#story" data-i18n="nav.story" onclick="toggleMobileMenu()"></a>
   <a href="#chef" data-i18n="nav.chef" onclick="toggleMobileMenu()"></a>
+  <a href="#grann" data-i18n="nav.grann" onclick="toggleMobileMenu()"></a>
   <a href="#testimonials" data-i18n="nav.reviews" onclick="toggleMobileMenu()"></a>
   <div style="display:flex;align-items:center;background:#EFE5CC;border-radius:2rem;border:1px solid rgba(200,137,26,0.3);overflow:hidden;margin-top:1rem;">
     <button style="padding:0.5rem 1.2rem;cursor:pointer;border:none;background:none;color:#8C7B68;font-family:Jost,sans-serif;font-size:0.85rem;font-weight:600;letter-spacing:0.1em;" onclick="setLang('ht');toggleMobileMenu()" id="mob-kr">KR</button>
@@ -617,6 +637,15 @@
   </div>
 </div>
 
+<!-- RESÈT GRANN -->
+<section class="grann-section" id="grann">
+  <div class="section-head">
+    <h2><span data-i18n="grann.h1"></span> <span class="accent" data-i18n="grann.h2"></span></h2>
+    <span class="section-kicker" data-i18n="grann.kicker"></span>
+  </div>
+  <div class="grann-grid" id="grann-grid"></div>
+</section>
+
 <!-- TESTIMONIALS -->
 <section class="testimonials" id="testimonials">
   <div class="section-head">
@@ -667,7 +696,7 @@
 const T = {
   ht: {
     'topbar.tag': 'Epis Otantik Peyi Dayiti — Livrezon nan tout Amerik',
-    'nav.spices':'Epis','nav.story':'Istwa Nou','nav.chef':'Chef Desmornes','nav.reviews':'Opinyon','nav.cart':'Panye',
+    'nav.spices':'Epis','nav.story':'Istwa Nou','nav.chef':'Chef Desmornes','nav.grann':'Resèt Grann','nav.reviews':'Opinyon','nav.cart':'Panye',
     'chef.bar.title':'Chèf Ekspè Sertifye · Testè Ofisyèl',
     'chef.bar.quote':'"Kalite se pa opsyon — se pwomès nou a chak kliyan."',
     'chef.bar.seal':'Apwouve pa Chef Tony',
@@ -705,10 +734,18 @@ const T = {
     'cart.title':'Panye Mwen','cart.empty':'Panye ou vid','cart.sub':'Sou-total','cart.ship':'Livrezon','cart.free':'Gratis','cart.total':'Total','cart.checkout':'Pase Kòmand →',
     'toast':'ajoute nan panye!',
     'strip':['Epis Ayisyen','✦','Livrezon Gratis','✦','Kalite Atizanal','✦','Rekolte ak Men','✦','100% Natirèl','✦','Apwouve Chef Tony','✦'],
+    'grann.h1':'Resèt','grann.h2':'Grann','grann.kicker':'Resèt Tradisyonèl Ayisyen',
+    'grann':[
+      {emoji:'🥩',name:'Griyò Kochon',sub:'Resèt Tradisyonèl · 4 Pòsyon',time:'2è marinad + 45 min',diff:'Fasil',ing:'1 lb kochon · Epis Griyo Fèl Gou · 2 zoranj sure · 1 sitwon · 1 tèt lay · ½ tèt powo · Sèl · Lwil pou fri',steps:['Koupe kochon an moso, lave ak sitwon ak zoranj sure.','Marinen ak Epis Griyo Fèl Gou, lay, powo pou omwen 2è.','Bouyi ½è ak ti dlo ak sèl jiskaske dlo evapore.','Fri nan lwil cho jiskaske dòre epi kwazan.'],tag:'Epis Griyo · Fèl Gou'},
+      {emoji:'🐟',name:'Pwason Boukannen',sub:'Resèt Tradisyonèl · 2 Pòsyon',time:'30 min',diff:'Fasil',ing:'2 pwason antye (tilapia oubyen snapè) · Epis Pwason Fèl Gou · 2 sitwon · 3 gous lay · Lwil doliv · Sèl · Pèsi fre',steps:['Netwaye pwason yo, fè swa sou chak bò.','Fwote ak Epis Pwason Fèl Gou, lay kraze, sitwon ak lwil.','Kite marinen 20 minit.','Boukannen sou griy cho 8 minit chak bò. Sèvi ak diri ak sòs piman.'],tag:'Epis Pwason · Fèl Gou'},
+      {emoji:'🥩',name:'Taso Bèf',sub:'Resèt Tradisyonèl · 4 Pòsyon',time:'3è',diff:'Mwayen',ing:'1.5 lb bèf (flanken oubyen chuck) · Epis Taso Fèl Gou · 1 zoranj sure · Lay · Powo · Lwil · Sèl',steps:['Koupe bèf an moso mince, lave ak zoranj sure.','Marinen ak Epis Taso Fèl Gou, lay, powo pou 1è omwen.','Bouyi sou dife mwayen ak ½ tas dlo jiskaske tendre.','Fri nan lwil cho jiskaske sèk epi kwazan. Sèvi ak bannann peze ak pikliz.'],tag:'Epis Taso · Fèl Gou'},
+      {emoji:'🍗',name:'Poul en Sòs',sub:'Resèt Tradisyonèl · 4 Pòsyon',time:'1è 15 min',diff:'Mwayen',ing:'1 poul koupe an moso · Epis Volay Fèl Gou · 1 boîte tomat kwit · 1 zonyon · 3 gous lay · Lwil · Dlo · Sèl',steps:['Lave poul ak sitwon, marinen ak Epis Volay Fèl Gou pou 1è.','Dore poul nan lwil cho chak bò jiskaske wouj dòre.','Ajoute zonyon, lay, tomat kwit ak 1 tas dlo.','Kite kuit sou dife mwayen 40 minit jiskaske sòs a epesi.'],tag:'Epis Volay · Fèl Gou'},
+      {emoji:'🥬',name:'Pikliz Otantik',sub:'Resèt Tradisyonèl · 1 Pot',time:'24è enfizyon',diff:'Fasil',ing:'½ chou tèt · 2 kawòt · ½ piman bouk · Epis Pikliz Fèl Gou · Vinèg blan · Sèl · 1 gous lay',steps:['Rape chou ak kawòt fineman, koupe piman an ti moso.','Melanje tout ak Epis Pikliz Fèl Gou ak sèl, peze 5 minit.','Mete nan yon boutèy, kouvri ak vinèg blan.','Kite enfize 24è avan pou manje. Konsève nan frijidè 2 semèn.'],tag:'Epis Pikliz · Fèl Gou'},
+    ],
   },
   en: {
     'topbar.tag': 'Authentic Haitian Spices — Shipping across the Americas',
-    'nav.spices':'Spices','nav.story':'Our Story','nav.chef':'Chef Desmornes','nav.reviews':'Reviews','nav.cart':'Cart',
+    'nav.spices':'Spices','nav.story':'Our Story','nav.chef':'Chef Desmornes','nav.grann':'Recipes','nav.reviews':'Reviews','nav.cart':'Cart',
     'chef.bar.title':'Certified Culinary Expert · Official Tester',
     'chef.bar.quote':'"Quality is not optional — it is our promise to every customer."',
     'chef.bar.seal':'Approved by Chef Tony',
@@ -746,6 +783,14 @@ const T = {
     'cart.title':'My Cart','cart.empty':'Your cart is empty','cart.sub':'Subtotal','cart.ship':'Shipping','cart.free':'Free','cart.total':'Total','cart.checkout':'Proceed to Checkout →',
     'toast':'added to cart!',
     'strip':['Haitian Spices','✦','Free Shipping','✦','Artisan Quality','✦','Hand Harvested','✦','100% Natural','✦','Chef Tony Approved','✦'],
+    'grann.h1':'Grann\'s','grann.h2':'Recipes','grann.kicker':'Traditional Haitian Home Cooking',
+    'grann':[
+      {emoji:'🥩',name:'Griot (Fried Pork)',sub:'Traditional Recipe · Serves 4',time:'2h marinade + 45 min',diff:'Easy',ing:'1 lb pork shoulder · Fèl Gou Griyo Spice Blend · 2 sour oranges · 1 lemon · 1 head garlic · ½ bunch leeks · Salt · Oil for frying',steps:['Cut pork into pieces, rinse with lemon and sour orange.','Marinate with Fèl Gou Griyo Blend, garlic, leeks for at least 2 hours.','Boil 30 min with a little water and salt until liquid evaporates.','Fry in hot oil until golden and crispy.'],tag:'Griyo Spice · Fèl Gou'},
+      {emoji:'🐟',name:'Grilled Fish',sub:'Traditional Recipe · Serves 2',time:'30 min',diff:'Easy',ing:'2 whole fish (tilapia or snapper) · Fèl Gou Pwason Spice Blend · 2 lemons · 3 garlic cloves · Olive oil · Salt · Fresh parsley',steps:['Clean the fish and score both sides.','Rub with Fèl Gou Pwason Blend, crushed garlic, lemon and oil.','Let marinate 20 minutes.','Grill on high heat 8 minutes each side. Serve with rice and hot sauce.'],tag:'Pwason Spice · Fèl Gou'},
+      {emoji:'🥩',name:'Tasso (Dried Beef)',sub:'Traditional Recipe · Serves 4',time:'3 hours',diff:'Medium',ing:'1.5 lb beef (flanken or chuck) · Fèl Gou Taso Spice Blend · 1 sour orange · Garlic · Leeks · Oil · Salt',steps:['Cut beef into thin pieces, rinse with sour orange.','Marinate with Fèl Gou Taso Blend, garlic, leeks for 1 hour minimum.','Boil on medium heat with ½ cup water until tender and liquid is gone.','Fry in hot oil until dry and crispy. Serve with fried plantains and pikliz.'],tag:'Taso Spice · Fèl Gou'},
+      {emoji:'🍗',name:'Chicken in Sauce',sub:'Traditional Recipe · Serves 4',time:'1h 15 min',diff:'Medium',ing:'1 whole chicken, cut up · Fèl Gou Volay Spice Blend · 1 can crushed tomatoes · 1 onion · 3 garlic cloves · Oil · Water · Salt',steps:['Rinse chicken with lemon, marinate with Fèl Gou Volay Blend for 1 hour.','Brown chicken in hot oil on both sides until golden.','Add onion, garlic, crushed tomatoes, and 1 cup water.','Simmer on medium heat 40 minutes until sauce thickens.'],tag:'Volay Spice · Fèl Gou'},
+      {emoji:'🥬',name:'Authentic Pikliz',sub:'Traditional Recipe · 1 Jar',time:'24h infusion',diff:'Easy',ing:'½ head cabbage · 2 carrots · ½ scotch bonnet pepper · Fèl Gou Pikliz Spice Blend · White vinegar · Salt · 1 garlic clove',steps:['Finely shred cabbage and carrots, slice pepper thin.','Mix everything with Fèl Gou Pikliz Blend and salt, squeeze 5 minutes.','Pack into a jar, cover with white vinegar.','Let infuse 24 hours before eating. Keeps 2 weeks refrigerated.'],tag:'Pikliz Spice · Fèl Gou'},
+    ],
   }
 };
 
@@ -787,7 +832,7 @@ function applyTranslations(){
   const checkoutBtn=document.getElementById('checkout-btn-el'); if(checkoutBtn) checkoutBtn.textContent=t('cart.checkout');
 }
 
-function setLang(l){ lang=l; applyTranslations(); renderProducts(); buildStrip(); updateCartUI(); }
+function setLang(l){ lang=l; applyTranslations(); renderProducts(); buildStrip(); renderGrann(); updateCartUI(); }
 
 function buildStrip(){
   const words=t('strip');
@@ -827,6 +872,30 @@ ${ticks}
 <line x1="68" y1="115" x2="132" y2="115" stroke="#C8891A" stroke-width="0.3"/>
 <text x="100" y="126" text-anchor="middle" font-family="Arial,sans-serif" font-size="7" fill="#B8780A" letter-spacing="3.5">DESMORNES</text>
 </svg>`;
+}
+
+function renderGrann() {
+  const items = (T[lang]||T.ht)['grann'] || [];
+  const tl = (T[lang]||T.ht);
+  document.getElementById('grann-grid').innerHTML = items.map(r => `
+    <div class="recipe-card">
+      <div class="recipe-card-top">
+        <span class="recipe-emoji">${r.emoji}</span>
+        <div class="recipe-name">${r.name}</div>
+        <span class="recipe-sub">${r.sub}</span>
+        <div class="recipe-meta">
+          <span>⏱ ${r.time}</span>
+          <span>· ${r.diff}</span>
+        </div>
+      </div>
+      <div class="recipe-body">
+        <span class="recipe-label">${lang==='ht'?'Engredyan':'Ingredients'}</span>
+        <p class="recipe-ingredients">${r.ing}</p>
+        <span class="recipe-label">${lang==='ht'?'Preparasyon':'Preparation'}</span>
+        <ol class="recipe-steps">${r.steps.map(s=>`<li>${s}</li>`).join('')}</ol>
+        <span class="recipe-spice-tag">${r.tag}</span>
+      </div>
+    </div>`).join('');
 }
 
 function renderProducts(){
@@ -1020,7 +1089,7 @@ function openSpice(i){
 function closeSpice(e){if(e.target===document.getElementById('spice-overlay'))closeSpiceBtn();}
 function closeSpiceBtn(){document.getElementById('spice-overlay').classList.remove('open');}
 
-applyTranslations(); renderProducts(); buildStrip(); buildSpiceGrid(); updateCartUI();
+applyTranslations(); renderProducts(); buildStrip(); buildSpiceGrid(); renderGrann(); updateCartUI();
 
 async function startMoncash() {
   const btn = document.getElementById('moncash-btn-el');
